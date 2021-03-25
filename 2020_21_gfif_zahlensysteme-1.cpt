@@ -1,0 +1,14 @@
+^^E^^L 
+	\begin{enumerate}[label=\alph*)]
+		\item $8$ bits mit je $2$ möglichen Zuständen:
+		$$2^8 = 256$$
+		\item $2^8-1 = 256 - 1 = 255$ (das $-1$ braucht es, weil $0$ die kleinste Zahl ist)
+
+		Lösungsvariante 1 im Detail (elegant): Mit $8$ Bits kann man $2^8 = 265$ Zahlen darstellen. Ist $0$ die kleinste, muss $255$ die grösste sein.
+
+		Lösungsvariante 1 im Detail (weniger elegant):
+		Die grösste Zahl ist $1111\,1111_2$. Umrechnen in Dezimalzahl ergibt $255$
+		\item $2^{8x}-1$
+		\item $6$ Bytes. Mit $5$ Bytes kann man maximal eine gute Milliarde darstellen (reicht nicht), mit $6$ Bytes sind es $281$ Milliarden (reicht).
+	\end{enumerate}
+^^E^^L 

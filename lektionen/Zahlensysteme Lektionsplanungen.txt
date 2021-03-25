@@ -1,0 +1,27 @@
+LEKTIONSPLANUNGEN
+
+LEKTION 1:
+Ziele:
+- Wissen, warum Binärsystem relevant ist
+- Uhr am Bhf St. Gallen entziffern können
+
+Materialien:
+- Slides (2020_21_gfif_zahlensysteme_slides)
+- uhr_binary_2.py (Binäruhr Programm)
+- Aufgaben aus Slides auf OneNote stellen
+
+Ablauf
+1. Binäruhr St. Gallen, Bekanntgabe Ziele heute
+2. Demonstration Programm Binäruhr, SuS sollen versuchen zu verstehen, wie funktioniert
+3. Challenge: SuS sollen angezeigte Uhr lesen, wer zuerst korrekte Lösung der Lehrperson zeigt, gewinnt
+4. Vortrag zu Zahlensysteme, Computer & Binärsystem (Ziel: Wissen, warum Binärsystem relevant ist)
+5. Genau diskutieren, wie Binärzahlen lesen
+6. Aufgaben zu Binäruhr lösen, Lösungen mit LP diskutieren (Aufgaben am Beamer und auf OneNote)
+7. Sobald erste Gruppen fertig: Zusatzaufgaben bekannt geben
+8. Lektionsschluss: Ziele erreicht? Ausblick nächste Lektionen
+
+Bemerkungen
+- Reguläres Programm benötigt ca. 30'
+
+
+

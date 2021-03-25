@@ -1,0 +1,27 @@
+^^E^^L 
+	\begin{tasks}
+		\task grösste Zahl: $0111_2 = 7_{10}$, kleinste Zahl: $1000_1 = -8_{10}$
+		\task 4 Bytes $=$ $32$ Bits:
+			\begin{itemize}
+				\item grösste Zahl: $2^{32-1} - 1 = \num{2147483647}$
+				\item kleinste Zahl: $-2^{32-1} = -\num{2147483648}$
+			\end{itemize}
+		\task
+		\begin{itemize}
+			\item Gemeinsamkeiten: beide 4 Bytes, beide für ganze Zahlen
+			\item Unterschiede: \textbf{\textit{uint}} nur positive Zahlen, \textbf{\textit{int}} auch negative, dafür ist grösster \textbf{\textit{uint}} etwa doppelt so gross wie grösster \textbf{\textit{int}}
+		\end{itemize}
+		\task
+	\end{tasks}
+	\begin{csharp}
+		int a;
+		// kein Fehler
+		a = 2147483647;
+		a = -2147483648;
+		Console.WriteLine(a);			
+		// Fehler
+		a = 2147483648;
+		a = -2147483649;
+		Console.WriteLine(a);
+	\end{csharp}
+^^E^^L 
