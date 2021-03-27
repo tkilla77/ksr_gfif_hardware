@@ -11,10 +11,17 @@ x_offset = -220
 x_dist = 3*L
 y_offset = 150
 
+dark_mode = True
+
 Options.setPlaygroundSize(600,600)
 
 turi = Turtle()
 turi.hideTurtle()
+
+myblue = "blue"
+if dark_mode:
+    turi.clear(makeColor("black",0.9))
+    myblue = "DodgerBlue"
 
 def decimal_to_binary(z):
     binary = ""
@@ -58,13 +65,8 @@ def replace_char_at_index(s,c,i):
     # replace char at index i in string with char c
     return s[:i] + c + s[i+1:]
 
-h_bin_prev = "xxxxxx"
-m_bin_prev = "xxxxxx"
-s_bin_prev = "xxxxxx"
-
-while True:
-    delay(133)
-    now = datetime.now()
+def show_clock(time):
+    now = datetime.strptime("18/09/19 {0}".format(time), '%d/%m/%y %H:%M:%S')
     h = now.hour
     m = now.minute
     s = now.second
@@ -73,28 +75,33 @@ while True:
     s_bin = decimal_to_binary(s)
 
     for i in range(6):
-        if h_bin[i] != h_bin_prev[i]:
-            h_bin_prev = replace_char_at_index(h_bin_prev,h_bin[i], i)
-            draw_circle(x_offset+i*x_dist,y_offset,"white",5)
-            if h_bin[i] == "1":
-                draw_circle(x_offset+i*x_dist,y_offset,"red",5)
-            else:
-                draw_circle(x_offset+i*x_dist,y_offset,"gray",2)            
+        draw_circle(x_offset+i*x_dist,y_offset,"white",5)
+        if h_bin[i] == "1":
+            draw_circle(x_offset+i*x_dist,y_offset,"red",5)
+        else:
+            draw_circle(x_offset+i*x_dist,y_offset,"gray",2)            
 
-        if m_bin[i] != m_bin_prev[i]:
-            m_bin_prev = replace_char_at_index(m_bin_prev,m_bin[i], i)
-            draw_cross(x_offset+i*x_dist,0,"white",5)
-            if m_bin[i] == "1":
-                draw_cross(x_offset+i*x_dist,0,"blue",5)
-            else:
-                draw_cross(x_offset+i*x_dist,0,"gray",2)
+        draw_cross(x_offset+i*x_dist,0,"white",5)
+        if m_bin[i] == "1":
+            draw_cross(x_offset+i*x_dist,0,myblue,5)
+        else:
+            draw_cross(x_offset+i*x_dist,0,"gray",2)
     
-        if s_bin[i] != s_bin_prev[i]:
-            s_bin_prev = replace_char_at_index(s_bin_prev,s_bin[i], i)
-            draw_square(x_offset+i*x_dist,-y_offset,"white",5)
-            if s_bin[i] == "1":
-                draw_square(x_offset+i*x_dist,-y_offset,"green",5)
-            else:
-                draw_square(x_offset+i*x_dist,-y_offset,"gray",2)
-            
-    #print("{0}:{1}:{2}".format(h,m,s))
+        draw_square(x_offset+i*x_dist,-y_offset,"white",5)
+        if s_bin[i] == "1":
+            draw_square(x_offset+i*x_dist,-y_offset,"green",5)
+        else:
+            draw_square(x_offset+i*x_dist,-y_offset,"gray",2)
+
+    print(time)
+
+show_clock("12:22:43")
+#show_clock("00:00:00")
+
+
+
+
+
+
+
+

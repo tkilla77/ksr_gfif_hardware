@@ -10,7 +10,7 @@ Materialien:
 - uhr_binary_2.py (Binäruhr Programm)
 - Aufgaben aus Slides auf OneNote stellen
 
-Ablauf
+Ablauf:
 1. Binäruhr St. Gallen, Bekanntgabe Ziele heute
 2. Demonstration Programm Binäruhr, SuS sollen versuchen zu verstehen, wie funktioniert
 3. Challenge: SuS sollen angezeigte Uhr lesen, wer zuerst korrekte Lösung der Lehrperson zeigt, gewinnt
@@ -20,8 +20,54 @@ Ablauf
 7. Sobald erste Gruppen fertig: Zusatzaufgaben bekannt geben
 8. Lektionsschluss: Ziele erreicht? Ausblick nächste Lektionen
 
-Bemerkungen
-- Reguläres Programm benötigt ca. 30'
+Bemerkungen & Änderungsideen:
+- Reguläres Programm benötigt ca. 30' -> könnte noch etwas ausbauen
+
+####################################################################
+
+LEKTION 2
+Ziele:
+- Wissen was ein Zahlensystem ist
+- Wissen wie Dezimal- & Dualsystem aufgebaut sind
+- Binärzahlen ins Dezimalsystem umrechnen können
+- Code schreiben, der Binärzahlen ins Dezimalsystem umrechnet
+
+Materialien:
+- Dossier
+- Slides zu Dezimal- & Binärsystem
+
+Ablauf:
+1. Warm-up I: Zeit von Binäruhr ablesen
+2. Warm-up II: Wie weit kann man mit 1 & 2 Händen zählen?
+3. Theorie:
+	- Zahlensysteme
+	- Dezimalsystem
+	- Binärsystem
+4. Aufgaben: 3.1 - 3.3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

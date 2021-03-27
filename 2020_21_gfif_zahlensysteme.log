@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.20)  25 MAR 2021 11:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.20)  27 MAR 2021 12:48
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1391,7 +1391,8 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
- (./2020_21_gfif_zahlensysteme.aux)
+
+No file 2020_21_gfif_zahlensysteme.aux.
 \openout1 = `2020_21_gfif_zahlensysteme.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 267.
@@ -1410,7 +1411,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 267.
 LaTeX Font Info:    ... okay on input line 267.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 267.
 LaTeX Font Info:    ... okay on input line 267.
- (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count459
 \scratchdimen=\dimen417
@@ -1464,7 +1465,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 267.
 LaTeX Info: Redefining \pageref on input line 267.
 LaTeX Info: Redefining \nameref on input line 267.
- (./2020_21_gfif_zahlensysteme.out) (./2020_21_gfif_zahlensysteme.out)
 \@outlinefile=\write5
 \openout5 = `2020_21_gfif_zahlensysteme.out'.
 
@@ -1517,7 +1517,7 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 267
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
-{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./2020_21_gfif_zahlensysteme.toc)
+{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 \tf@toc=\write6
 \openout6 = `2020_21_gfif_zahlensysteme.toc'.
 
@@ -1540,103 +1540,109 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 371.
- [2]
+
+
+LaTeX Warning: Reference `mdf@pagelabel-1' on page 2 undefined on input line 371.
+
+
+Overfull \hbox (30.84477pt too wide) in paragraph at lines 373--374
+[]\OT1/cmr/m/n/10.95 Im \OT1/cmr/bx/n/10.95 De-zi-mal-sys-tem \OT1/cmr/m/n/10.95 (auch \OT1/cmr/bx/n/10.95 Zeh-ner-sys-tem\OT1/cmr/m/n/10.95 ) ist die Ba-sis $10$ und die Nenn-wer-te sind $0\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 1\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 3\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 4\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 5\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 6\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 7\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 8$
+ []
+
+[2]
 Package mdframed Info: mdframed works in twoside mode on input line 415.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 415.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 416.
-
-Underfull \hbox (badness 1655) in paragraph at lines 436--439
-[]\OT1/cmr/m/n/10.95 Die Zahl ganz rechts, al-so die-je-ni-ge, die
- []
+(mdframed)              on input line 418.
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 436--439
-\OT1/cmr/m/n/10.95 un-ge-ra-de ist, wird \OT1/cmr/bx/n/10.95 least si-gni-fi-cant bit
- []
+LaTeX Warning: Reference `mdf@pagelabel-2' on page 3 undefined on input line 418.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 436--439
-
- []
-
-
-Underfull \hbox (badness 2189) in paragraph at lines 436--439
-\OT1/cmr/m/n/10.95 Im Bild rechts siehst du, wie man mit
- []
-
-<figures/binarycount.jpg, id=80, 723.45282pt x 560.0925pt>
+<figures/binarycount.jpg, id=67, 723.45282pt x 560.0925pt>
 File: figures/binarycount.jpg Graphic file (type jpg)
 <use figures/binarycount.jpg>
-Package pdftex.def Info: figures/binarycount.jpg  used on input line 445.
+Package pdftex.def Info: figures/binarycount.jpg  used on input line 447.
 (pdftex.def)             Requested size: 217.42265pt x 168.32816pt.
 
-Overfull \hbox (25.38425pt too wide) in paragraph at lines 456--456
+Overfull \hbox (25.38425pt too wide) in paragraph at lines 458--458
  [][] 
  []
 
 
-Overfull \hbox (25.38425pt too wide) in paragraph at lines 456--456
+Overfull \hbox (25.38425pt too wide) in paragraph at lines 458--458
  [][] 
  []
 
 
-Overfull \hbox (25.38425pt too wide) in paragraph at lines 456--456
+Overfull \hbox (25.38425pt too wide) in paragraph at lines 458--458
  [][] 
  []
 
-[3 <./figures/binarycount.jpg>] (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
+[3 <./figures/binarycount.jpg>] [4] (/usr/local/texlive/2020/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [4]
-Overfull \hbox (25.38425pt too wide) in paragraph at lines 517--517
+) [5]
+Overfull \hbox (25.38425pt too wide) in paragraph at lines 519--519
  [][] 
  []
 
 
-Overfull \hbox (25.38425pt too wide) in paragraph at lines 517--517
+Overfull \hbox (25.38425pt too wide) in paragraph at lines 519--519
  [][] 
  []
 
 
-Overfull \hbox (25.38425pt too wide) in paragraph at lines 517--517
+Overfull \hbox (25.38425pt too wide) in paragraph at lines 519--519
  [][] 
  []
 
 
-Overfull \hbox (25.38425pt too wide) in paragraph at lines 517--517
+Overfull \hbox (25.38425pt too wide) in paragraph at lines 519--519
  [][] 
  []
 
 \openout4 = `2020_21_gfif_zahlensysteme-1.cpt'.
 
-[5] [6] [7]
+[6] [7] [8]
 \openout4 = `2020_21_gfif_zahlensysteme-2.cpt'.
 
- (./2020_21_gfif_zahlensysteme-2.cpt) [8] (./2020_21_gfif_zahlensysteme-1.cpt) [9] [10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1494.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1494.
+ (./2020_21_gfif_zahlensysteme-2.cpt) [9] (./2020_21_gfif_zahlensysteme-1.cpt) [10] [11]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1496.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1496.
  (./2020_21_gfif_zahlensysteme.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1494.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1494.
-Package rerunfilecheck Info: File `2020_21_gfif_zahlensysteme.out' has not changed.
-(rerunfilecheck)             Checksum: 555869922DF3551C49F6CA65AE65E1CA;145.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1496.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1496.
+
+
+Package rerunfilecheck Warning: File `2020_21_gfif_zahlensysteme.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `2020_21_gfif_zahlensysteme.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  555869922DF3551C49F6CA65AE65E1CA;145.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 59032 strings out of 480608
- 1453909 string characters out of 5903630
- 2185613 words of memory out of 5000000
- 73745 multiletter control sequences out of 15000+600000
+ 59020 strings out of 480608
+ 1453595 string characters out of 5903630
+ 2185250 words of memory out of 5000000
+ 73740 multiletter control sequences out of 15000+600000
  545549 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,15n,129p,1172b,1797s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on 2020_21_gfif_zahlensysteme.pdf (12 pages, 291674 bytes).
+Output written on 2020_21_gfif_zahlensysteme.pdf (13 pages, 291067 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
- 189 compressed objects within 2 object streams
- 77 named destinations out of 1000 (max. 500000)
- 138 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 180 compressed objects within 2 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 114 words of extra memory for PDF output out of 10000 (max. 10000000)
 

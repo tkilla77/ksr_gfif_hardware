@@ -362,15 +362,15 @@ Wie weit kann man mit zwei Händen zählen?
 
 \section{Zahlensysteme}
 
-Eine \textbf{ganze Zahl}, auf Englisch \textbf{Integer} genannt, ist eine Zahl ohne Nachkommastellen, zum Beispiel \num{42}, \num{100023} oder \num{-7}. Ein Integer kann also sowohl positiv wie auch negativ sein.
+% Eine \textbf{ganze Zahl}, auf Englisch \textbf{Integer} genannt, ist eine Zahl ohne Nachkommastellen, zum Beispiel \num{42}, \num{100023} oder \num{-7}. Ein Integer kann also sowohl positiv wie auch negativ sein.
 
 \begin{definition}
 	Ein \textbf{Zahlensystem} ist ein System, mit dem Zahlen dargestellt werden. Es wird durch seine \textbf{Basis} und seine \textbf{Nennwerte} festgelegt.
 
-	Beispiele sind das uns sehr vertraute Dezimalsystem, das Dualsystem oder das Hexadezimalsystem.
+	Beispiele für Zahlensysteme sind das uns sehr vertraute Dezimalsystem, das Binärsystem (Basis $2$) oder das Hexadezimalsystem (Basis $16$).
 \end{definition}
 
-Im \textbf{Dezimalsystem} ist die Basis $10$ und die Nennwerte sind $0,1,2,3,4,5,6,7,8$ und $9$. Die Zahl $1903_{10}$ ist dann wie folgt zu interpretieren:
+Im \textbf{Dezimalsystem} (auch \textbf{Zehnersystem}) ist die Basis $10$ und die Nennwerte sind $0,1,2,3,4,5,6,7,8$ und $9$. Die Zahl $1903_{10}$ ist dann wie folgt zu interpretieren:
 \begin{align}
 	\label{equ dezimalzahl in basis und nennwerten}
 	\textcolor{blue}{1903}_{\textcolor{magenta}{10}}
@@ -379,7 +379,7 @@ Im \textbf{Dezimalsystem} ist die Basis $10$ und die Nennwerte sind $0,1,2,3,4,5
 	+ \textcolor{blue}{0}\times \textcolor{magenta}{10}^{\textcolor{red}{1}} 
 	+ \textcolor{blue}{3}\times \textcolor{magenta}{10}^{\textcolor{red}{0}}
 \end{align}
-Mit der \textit{kleinen Zahl unten rechts} deuten wir an, dass die Zahl im Dezimalsystem zu betrachten ist. Lässt man diese Zahl weg, schreibt man also z.B. $576$, so bedeutet dies (meistens), dass die Zahl im Dezimalsystem steht.
+Mit der \textit{kleinen Zahl unten rechts} ($\textcolor{magenta}{10}$) deuten wir an, dass die Zahl im Dezimalsystem zu betrachten ist. Lässt man diese Zahl weg, schreibt man also z.B. $576$, so bedeutet dies (meistens), dass die Zahl im Dezimalsystem steht.
 
 % In obigen Beispiel hat die Stelle ganz rechts ($3$) die \textbf{Wertigkeit} $3\times 10^0 = 3$, diejenige der Ziffer $9$ die Wertigkeit $9\times 10^2 = 900$ usw.
 
@@ -412,7 +412,9 @@ Mit der \textit{kleinen Zahl unten rechts} deuten wir an, dass die Zahl im Dezim
 \end{center}
 
 \begin{definition}
-	Die kleinste Informationseinheit ist das \textbf{Bit}, es hat zwei Möglichkeiten: es kann entweder $0$ oder $1$ sein. In der Welt der Elektrotechnik hat diese eine besondere Relevanz, da diese den beiden Zuständen `es fliesst kein Strom ($0$)' oder `es fliesst Strom ($1$)' entsprechen. Deshalb ist da das \textbf{Binärsystem} wichtig: Die Basis ist $2$ und die Nennwerte sind $0$ und $1$. Eine Binärzahl besteht also aus mehreren Bits.
+	Die kleinste Informationseinheit ist das \textbf{Bit}, es hat zwei Möglichkeiten: es kann entweder $0$ oder $1$ sein. In der Welt der Elektrotechnik hat diese eine besondere Relevanz, da diese den beiden Zuständen `es fliesst kein Strom ($0$)' oder `es fliesst Strom ($1$)' entsprechen.
+	
+	Deshalb ist da das \textbf{Binärsystem} (auch \textbf{Dualsystem} oder \textbf{Zweiersystem}) wichtig: Die Basis ist $2$ und die Nennwerte sind $0$ und $1$. Eine Binärzahl besteht also aus mehreren Bits.
 \end{definition}
 
 Das \textbf{Umrechnen einer Binärzahl in eine Dezimalzahl} geht ganz einfach. Für die Zahl $100101_2$ geht man wie folgt vor:
@@ -433,8 +435,8 @@ Das \textbf{Umrechnen einer Binärzahl in eine Dezimalzahl} geht ganz einfach. F
 
 \begin{minipage}[t]{\textwidth}
 \begin{minipage}[t]{0.48\textwidth}
-	Die Zahl ganz rechts, also diejenige, die darüber entscheidet, ob die Zahl gerade oder ungerade ist, wird \textbf{least significant bit (LSB)} genannt. Dasjenige ganz links heisst das \textbf{most significant bit (MSB)}.
-	\\ \\
+	% Die Zahl ganz rechts, also diejenige, die darüber entscheidet, ob die Zahl gerade oder ungerade ist, wird \textbf{least significant bit (LSB)} genannt. Dasjenige ganz links heisst das \textbf{most significant bit (MSB)}.
+	% \\ \\
 	Im Bild rechts siehst du, wie man mit den Fingern einer Hand binär bis auf $31$ zählen kann.
 \end{minipage}
 \hfill
@@ -491,7 +493,7 @@ Das \textbf{Umrechnen einer Binärzahl in eine Dezimalzahl} geht ganz einfach. F
 	\begin{itemize}
 		\vspace{-\topsep}
 		\item Schreibe die Binärzahl als String,  z.B. \pythoninline{b = '100101'}.
-		\item Eib String kann dann behandelt werden wie ein Array. Mit \pythoninline{b[2]} kann man den dritten Buchstaben des Strings \pythoninline{b} auslesen. Auch kann man genau gleich mit einer for-Schleife (\pythoninline{for x in b:} \ldots) durch alle Buchstaben des Strings durchgehen. 
+		\item Ein String kann dann behandelt werden wie ein Array. Mit \pythoninline{b[2]} kann man den dritten Buchstaben des Strings \pythoninline{b} auslesen. Auch kann man genau gleich mit einer for-Schleife (\pythoninline{for x in b:} \ldots) durch alle Buchstaben des Strings durchgehen. 
 	\end{itemize}		
 \end{question}
 \begin{solution}
