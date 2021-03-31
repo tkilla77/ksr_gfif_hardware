@@ -44,6 +44,9 @@ Ablauf:
 	- Dezimalsystem
 	- Binärsystem
 4. Aufgaben: 3.1 - 3.3
+5. Ev. Tipps geben zur Programmieraufgabe:
+	- Binärzahl als String
+	- String ganz ähnlich wie Array, z.B. for x in mystring: ...
 
 
 

@@ -433,27 +433,25 @@ Das \textbf{Umrechnen einer Binärzahl in eine Dezimalzahl} geht ganz einfach. F
 	&= 37_{10}		
 \end{split}\end{align}
 
-\begin{minipage}[t]{\textwidth}
-\begin{minipage}[t]{0.48\textwidth}
-	% Die Zahl ganz rechts, also diejenige, die darüber entscheidet, ob die Zahl gerade oder ungerade ist, wird \textbf{least significant bit (LSB)} genannt. Dasjenige ganz links heisst das \textbf{most significant bit (MSB)}.
-	% \\ \\
-	Im Bild rechts siehst du, wie man mit den Fingern einer Hand binär bis auf $31$ zählen kann.
-\end{minipage}
-\hfill
-\begin{minipage}[t]{0.48\textwidth}
-	\begin{figure}[H]
-		\vspace{-0.7cm}
-		\centering
-		\includegraphics[width=\textwidth]{binarycount}
-	\end{figure}
-\end{minipage}
-\end{minipage}
+% Die Zahl ganz rechts, also diejenige, die darüber entscheidet, ob die Zahl gerade oder ungerade ist, wird \textbf{least significant bit (LSB)} genannt. Dasjenige ganz links heisst das \textbf{most significant bit (MSB)}.
+% \\ \\
+
+Im Bild unten siehst du, wie man mit den Fingern einer Hand binär bis auf $31$ zählen kann.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{binarycount}
+\end{figure}
+
+\newpage
 
 \begin{question}
 	\begin{tasks}
-		\task Wandle die Binärzahl $10001_2$ ins Binärsystem um. Tue dies zuerst mithilfe der Grafik oben. Überprüfe danach dein Resultat rechnerisch (wie im Beispiel oben). \grid{3.2}
-		\task Wandle die Dezimalzahl $28_{10}$ mithilfe der Grafik oben ins Binärsystem um. \grid{3.2}
-		\task Warum ist die Zahl $10010_2$ die Lieblingszahl von jedem Heavy Metal Fan? \grid{3.2}
+		\task Wandle die Binärzahl $10001_2$ ins Binärsystem um. Tue dies zuerst mithilfe der Grafik oben. Überprüfe danach dein Resultat rechnerisch (wie im Beispiel oben).
+		\grid{5.2}
+		\task Wandle die Dezimalzahl $28_{10}$ mithilfe der Grafik oben ins Binärsystem um.
+		\grid{5.2}
+		\task Warum ist die Binärzahl $10010_2$ die Lieblingszahl von jedem Heavy Metal Fan?
+		\grid{5.2}
 	\end{tasks}
 \end{question}
 \begin{solution}
@@ -537,7 +535,7 @@ Das \textbf{Umrechnen einer Binärzahl in eine Dezimalzahl} geht ganz einfach. F
 Wir wissen nun, wie man Binärzahlen in Dezimalzahlen umwandelt.
 Ziel dieser Aufgabe ist herauszufinden, wie der umgekehrte Schritt funktioniert: Das \textbf{Umwandeln von Dezimalzahlen in Binärzahlen.}
 
-Dazu gibt es einen \textit{Algorithmus}, welcher wie folgt funktioniert: Starte mit der gegebenen Dezimalzahl und dividiere sie durch $2$ und notiere das Resultat sowie den Rest. Wiederhole nun diesen Schritt, allerdings startest du nun mit dem Resultat des letzten Schritts usw. Dies wiederholst du solange, bis als Resultat $0$ herauskommt. Die Binärzahl ist dann gegeben durch die Reste der Divisionen und zwar in umgekehrter Reihenfolge. Dieser Algorithmus wird der \textbf{Restwert-Algorithmus} genannt.
+Dazu gibt es einen \textit{Algorithmus}, welcher wie folgt funktioniert: Starte mit der gegebenen Dezimalzahl und dividiere sie durch $2$ und notiere das Resultat sowie den Rest. Wiederhole nun diesen Schritt, allerdings startest du nun mit dem Resultat des letzten Schritts. Dies wiederholst du solange, bis als Resultat $0$ herauskommt. Die Binärzahl ist dann gegeben durch die Reste der Divisionen und zwar in umgekehrter Reihenfolge. Dieser Algorithmus wird der \textbf{Restwert-Algorithmus} genannt.
 
 Schauen wir uns diesen Algorithmus für die Zahl $42_{10}$ an:
 \begin{align*}
@@ -567,6 +565,8 @@ Damit man diese Rechnung auch etwas kürzer - aber doch übersichtlich - darstel
 	 0 & 1 \\ \hline
 	\end{tabular}
 \end{table}
+
+% \textit{Tipp:} Versuche zu verstehen, \textit{warum} dieser Algorithmus tut, was er tut. 
 
 \newpage 
 
