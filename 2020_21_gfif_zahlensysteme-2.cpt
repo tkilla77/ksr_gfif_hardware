@@ -1,3 +1,0 @@
-^^E^^L 
-	\textbf{Implementiere den Restwert-Algorithmus in Python.} Definiere im Programm eine Funktion \pythoninline{dezimal_zu_binaer(d)}, welche eine Dezimalzahl \pythoninline{d} als Argument entgegen nimmt, in eine Binärzahl umrechnet und mit return zurückgibt. Überprüfe deinen Code, indem du diesen auf die Beispiele aus der letzten Aufgabe anwendest.
-^^E^^L 
