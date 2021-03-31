@@ -32,7 +32,7 @@
 
 % SELECT VERSION
 \lptrue\susfalse  % DEUTSCH TEACHER
-\lpfalse\sustrue  % DEUTSCH STUDENT
+% \lpfalse\sustrue  % DEUTSCH STUDENT
 
 
 
@@ -446,7 +446,7 @@ Im Bild unten siehst du, wie man mit den Fingern einer Hand binär bis auf $31$ 
 
 \begin{question}
 	\begin{tasks}
-		\task Wandle die Binärzahl $10001_2$ ins Binärsystem um. Tue dies zuerst mithilfe der Grafik oben. Überprüfe danach dein Resultat rechnerisch (wie im Beispiel oben).
+		\task Wandle die Binärzahl $10001_2$ ins Dezimalsystem um. Tue dies zuerst mithilfe der Grafik oben. Überprüfe danach dein Resultat rechnerisch (wie im Beispiel oben).
 		\grid{5.2}
 		\task Wandle die Dezimalzahl $28_{10}$ mithilfe der Grafik oben ins Binärsystem um.
 		\grid{5.2}
@@ -492,10 +492,24 @@ Im Bild unten siehst du, wie man mit den Fingern einer Hand binär bis auf $31$ 
 		\vspace{-\topsep}
 		\item Schreibe die Binärzahl als String,  z.B. \pythoninline{b = '100101'}.
 		\item Ein String kann dann behandelt werden wie ein Array. Mit \pythoninline{b[2]} kann man den dritten Buchstaben des Strings \pythoninline{b} auslesen. Auch kann man genau gleich mit einer for-Schleife (\pythoninline{for x in b:} \ldots) durch alle Buchstaben des Strings durchgehen. 
-	\end{itemize}		
+	\end{itemize}
 \end{question}
 \begin{solution}
 	\textcolor{red}{Schicke deinen Code per Teams deiner Lehrperson.}
+
+	% \begin{python}
+	% 	def binary_to_decimal(b):
+	% 		d = 0
+	% 		for i in range(len(b)):
+	% 			#d += int(b[-1-i])*2**i         # VARIANTE 1
+	% 			d += int(b[i])*2**(len(b)-i-1)  # VARIANTE 2
+	% 		return d
+		
+	% 	bin_nr = "100101"
+	% 	dec_nr = binary_to_decimal(bin_nr)
+	% 	print(dec_nr)
+	% \end{python}
+	
 \end{solution}
 
 \newpage
