@@ -1,4 +1,5 @@
 \documentclass{beamer}
+% \documentclass[handout]{beamer}
 \usetheme{Warsaw}
 
 \setbeamercolor{normal text}{fg=white,bg=black!90}
@@ -27,7 +28,7 @@
 \usepackage[ngerman]{babel}
 
 \title{Informatik: Zahlensysteme}
-\subtitle{Dezimal- \& Binärsystem}
+% \subtitle{}
 \author{sca,kng}
 \institute{KSR}
 \date{\today}
@@ -36,6 +37,11 @@
 
 \begin{frame}
     \titlepage
+\end{frame}
+
+\begin{frame}
+    \LARGE
+    Lektion 2: Dezimal- \& Binärsystem
 \end{frame}
 
 \begin{frame}
@@ -176,6 +182,129 @@
         
     \end{itemize}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \LARGE
+    Lektion 3: Dezimal- \& Binärsystem II
+\end{frame}
+
+\begin{frame}
+    \frametitle{Warm-Up I}
+    Welche Zahl (als Binär- und Dezimalzahl) wird hier dargestellt?
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{hand_5}
+    \end{figure}
+    \onslide<2-> $$101_2
+    \onslide<3->= 2^2 + 2^0
+    \onslide<4->= 4+1
+    \onslide<5->= 5$$
+\end{frame}
+
+\begin{frame}
+    \frametitle{Warm-Up I}
+    Welche Zahl (als Binär- und Dezimalzahl) wird hier dargestellt?
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{hand_29}
+    \end{figure}
+    \onslide<2-> $$11101_2
+    \onslide<3->= 2^4+2^3+2^2+2^0
+    \onslide<4->= 16+8+4+1
+    \onslide<5->= 29$$
+\end{frame}
+
+\begin{frame}
+    \frametitle{Warm-Up I}
+    Welche Zahl (als Binär- und Dezimalzahl) wird hier dargestellt?
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.2\textwidth]{hand_4}
+        \hspace{-0.8cm}
+        \includegraphics[width=0.2\textwidth]{hand_4}
+    \end{figure}
+    \onslide<2-> $$00100\,00100_2
+    \onslide<3->= 2^7+2^2
+    \onslide<4->= 128 + 4
+    \onslide<5->= 132$$
+\end{frame}
+
+\begin{frame}
+    \frametitle{Warm-Up II}
+    \begin{itemize}
+        \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+        \item \textbf{Wie weit kann man mit einer Hand zählen?}
+        \item \onslide<2-> Antwort: 31
+        \item \onslide<3->Warum?
+        \item \onslide<4->Jeder Finger $2$ Möglichkeiten
+        \item \onslide<5->5 Finger: $2\cdot2\cdot2\cdot2\cdot2 = 2^5 = 32$ Möglichkeiten
+        \item \onslide<6->da Null eine Möglichkeit \ldots
+        \item \onslide<7->höchste Zahl ist $2^5-1 = 32-1 = 31$
+        \item \onslide<8->\textbf{Wie weit kann man mit zwei Händen zählen?}
+        \item \onslide<9-> Antwort: $2^10-1 = 1023$
+    \end{itemize}
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Ziele}
+    \begin{itemize}
+        \item Dezimalzahlen in Binärzahlen umrechnen können
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \textbf{Plan}:
+    \begin{enumerate}
+        % \vspace{-\topsep}
+        \onslide<2-> \item Umrechnung Dezimalzahl $\rightarrow$ Binärzahl deomonstrieren und erklären.\\
+        ALTERNATIVE: Selbst studieren im Dossier.
+        \onslide<3-> \item Tipps für A3.3, \textcolor{red}{fertig machen bis heute Abend und abgeben per Teams}
+        \onslide<4-> \item HA korrigieren, Lösungen auf OneNote (ausser A3.3)
+        \onslide<5-> \item restliche Aufgaben im Dossier: A3.4-3.6
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Umrechnung: Dezimalzahl zu Binärzahl}
+    $42_{10}$ als Binärzahl?
+    \onslide<2-> $$\text{Schritt 1:} \quad 42                      \quad/\quad 2 \quad = \quad \onslide<3->\textcolor{blue}{21}    \quad \text{Rest:} \quad \textcolor{red}{0}$$  \vspace{-0.5cm}
+    \onslide<4-> $$\text{Schritt 2:} \quad \textcolor{blue}{21}    \quad/\quad 2 \quad = \quad \onslide<5->\textcolor{magenta}{10} \quad \text{Rest:} \quad \textcolor{red}{1}$$  \vspace{-0.5cm}
+    \onslide<6-> $$\text{Schritt 3:} \quad \textcolor{magenta}{10} \quad/\quad 2 \quad = \quad \onslide<7->\textcolor{green}{5}    \quad \text{Rest:} \quad \textcolor{red}{0}$$  \vspace{-0.5cm}
+    \onslide<8-> $$\text{Schritt 4:} \quad \textcolor{green}{5}    \quad/\quad 2 \quad = \quad \onslide<9->\textcolor{orange}{2}   \quad \text{Rest:} \quad \textcolor{red}{1}$$  \vspace{-0.5cm}
+    \onslide<10-> $$\text{Schritt 5:} \quad \textcolor{orange}{2}   \quad/\quad 2 \quad = \quad \onslide<11->\textcolor{cyan}{1}     \quad \text{Rest:} \quad \textcolor{red}{0}$$\vspace{-0.5cm}
+    \onslide<12-> $$\text{Schritt 6:} \quad \textcolor{cyan}{1}     \quad/\quad 2 \quad = \quad \onslide<13->\textcolor{yellow}{0}   \quad \text{Rest:} \quad \textcolor{red}{1}$$
+    \onslide<14->
+    Das Resultat ist also:
+    $\quad42_{10} = \textcolor{red}{101010}_2$
+\end{frame}
+
+\begin{frame}
+    \frametitle{Umrechnung: Dezimalzahl zu Binärzahl}
+    $37_{10}$ als Binärzahl? Kompakte Darstellung:
+    \onslide<2->
+    \begin{table}[H]
+        \centering
+        \renewcommand{\arraystretch}{1.5}
+        \begin{tabular}{|c|c|}
+        \hline
+        \onslide<2->\textbf{37} & \\ \hline
+        \onslide<3->18 &\onslide<4->  \textcolor{red}{1} \\ \hline
+        \onslide<5->9  &\onslide<6->  \textcolor{red}{0} \\ \hline
+        \onslide<7->4  &\onslide<8->  \textcolor{red}{1} \\ \hline
+        \onslide<9->2  &\onslide<10-> \textcolor{red}{0} \\ \hline
+        \onslide<11->1 &\onslide<12-> \textcolor{red}{0} \\ \hline
+        \onslide<13->0 &\onslide<14-> \textcolor{red}{1} \\ \hline
+    \end{tabular}
+    \end{table}
+    \onslide<15->
+    Das Resultat ist also
+    $$37_{10} = \textcolor{red}{100101}_2$$
+\end{frame}
+
 
 % \begin{frame}
 %     \frametitle{}

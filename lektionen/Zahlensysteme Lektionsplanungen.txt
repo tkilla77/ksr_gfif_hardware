@@ -48,18 +48,26 @@ Ablauf:
 	- Binärzahl als String
 	- String ganz ähnlich wie Array, z.B. for x in mystring: ...
 
+####################################################################
+
+LEKTION 3
+Ziele:
 
 
 
 
 
 
+Ablauf:
+1. Code Aufgabe 3.3 Tipps geben:
+	- verwende vordefinierte Funktionen wie len(b), anstelle mit while selbst zu programmieren
+	- for i in b, vs for i in range(len(b))
+	- Beispiel binär -> dezimal von Hand systematisch durchrechnen
 
 
 
-
-
-
+HA:
+- Aufgabe 3.3 muss bis heute Abend gemacht und abgegeben werden. 
 
 
 

@@ -32,7 +32,7 @@
 
 % SELECT VERSION
 \lptrue\susfalse  % DEUTSCH TEACHER
-% \lpfalse\sustrue  % DEUTSCH STUDENT
+\lpfalse\sustrue  % DEUTSCH STUDENT
 
 
 
@@ -632,6 +632,12 @@ Damit man diese Rechnung auch etwas kürzer - aber doch übersichtlich - darstel
 \begin{solution}
 \end{solution}
 
+% \cprotEnv\begin{question}
+% 	**Zusatzaufgabe:
+% \end{question}
+% \begin{solution}	
+% \end{solution}
+
 \newpage
 
 	
@@ -675,16 +681,15 @@ Damit man diese Rechnung auch etwas kürzer - aber doch übersichtlich - darstel
 
 % Speichergrössen werden zum Beispiel in GB
 
-\begin{comment}
 
-\subsubsection{Addition}
+\subsection{Addition}
 
 \begin{question}
-	Das \textbf{schriftliche Addieren von zwei binären Zahlen} funktioniert gleich wie das schriftliche Addieren von Dezimalzahlen, welches man in der Primarschule lernt.
+	Das \textbf{schriftliche Addieren von zwei binären Zahlen} funktioniert nach dem gleichen Prinzip wie das schriftliche Addieren von Dezimalzahlen, welches man in der Primarschule lernt.
 	\begin{tasks}
 		\task Führe zum Aufwärmen die folgende Addition zweier Dezimalzahlen schriftlich aus:
 		$$\num{50974}_{10} + \num{81963}_{10}$$
-		\grid{5.2}
+		\grid{7.2}
 		\task Führe nun folgende Additionen schriftlich aus:
 		\begin{itemize}
 			\item $1100\,1100_2 + 0011\,0011_2$
@@ -692,7 +697,7 @@ Damit man diese Rechnung auch etwas kürzer - aber doch übersichtlich - darstel
 			\item $1101\,0010_2 + 1100\,0101_2$
 			\item $1110\,1111_2 + 1011\,0101_2$
 		\end{itemize}
-		\grid{13.2}
+		\grid{11.2}
 	\end{tasks}
 \end{question}
 \begin{solution}
@@ -755,14 +760,14 @@ Damit man diese Rechnung auch etwas kürzer - aber doch übersichtlich - darstel
 
 \newpage
 
-\subsubsection{Negative Zahen \& Subtraktion}
+\subsection{Negative Zahen \& Subtraktion}
 
 In der Mathematik ist die Subtraktion keine eigene Operation, denn sie ist durch die Addition definiert: $a - b = a + (-b)$, oder: `Subtraktion' = `Addition der Gegenzahl'.
 Damit man eine Binärzahl von einer anderen subtrahieren kann, muss man deshalb zuerst festlegen, wie man \textbf{negative Zahlen} ausdrückt.
 
 Man könnte sich zum Beispiel darauf einigen, dass das Bit ganz links über das Vorzeichen entscheidet und der Absolutwert der Zahl durch die restlichen Bits festgelegt ist. Dann wäre $0101_2 = +5_{10}$ und $1101_2 = -5_{10}$. Dies birgt aber ein Problem: Addiert man eine Zahl mit seiner Gegenzahl, so möchte man $0$ erhalten. Dies ist mit dieser Definition aber nicht der Fall: $0101_2 + 1101_2 = 10010_2 \neq 0.$ Deshalb verwerfen wir diesen Ansatz, um negative Zahlen darzustellen.
 
-Eine negative Zahle wird durch ihr \textbf{2er-Komplement} ausgedrückt. Dabei muss man zuerst festlegen, wieviele Bits die Zahlen haben sollen. Für 4-Bit ist das 2er-Komplement von $0101_2 = +5_{10}$ die Zahl $1011_2$. Addieren wir die beiden Zahlen, so erhalten wir $1\,0000_2$. In 4-Bit fällt die Stelle links weg und es bleibt $0000_2$ übrig.
+Stattdessen wird eine negative Zahle durch ihr \textbf{2er-Komplement} ausgedrückt. Dabei muss man zuerst festlegen, wieviele Bits die Zahlen haben sollen. Für $4-$Bit ist das 2er-Komplement von $0101_2 = +5_{10}$ die Zahl $1011_2$. Addieren wir die beiden Zahlen, so erhalten wir $1\,0000_2$. In 4-Bit fällt die Stelle links weg und es bleibt $0000_2$ übrig.
 
 Das 2er-Komplement bildet man wie folgt:
 \vspace{-0.4cm}
@@ -772,7 +777,7 @@ Das 2er-Komplement bildet man wie folgt:
 	\item und am Schluss $1$ dazu addiert.
 \end{itemize}
 
-Das MSB entscheidet hier also darüber, ob die Zahl positiv oder negativ ist.
+Das Bit ganz links entscheidet hier also darüber, ob die Zahl positiv oder negativ ist.
 
 \begin{figure}[H]
 	\centering
@@ -783,7 +788,7 @@ Das MSB entscheidet hier also darüber, ob die Zahl positiv oder negativ ist.
 
 \begin{question}
 	\begin{tasks}
-		\task Bestimme die Gegenzahl von $101101_2$ in 8-Bit.
+		\task Bestimme die Gegenzahl von $101101_2$ in $8-$Bit.
 		\task Welche negative Dezimalzahl wird durch die Zahl $1010\,1011_2$ ausgedrückt?
 	\end{tasks}	
 	\grid{5.2}
@@ -796,7 +801,7 @@ Das MSB entscheidet hier also darüber, ob die Zahl positiv oder negativ ist.
 \end{solution}
 
 \begin{question}
-	Führe die folgenden Subtraktionen aus. Bestimme dazu vom Subtrahend das 2er-Komplement und addiere dann die beiden Zahlen. Die einzelnen Zahlen sind als positive Zahlen zu interpretieren. Um das 2er-Komplement zu bilden, müssen sie also erweitert werden.
+	Führe die folgenden Subtraktionen aus. Bestimme dazu vom Subtrahend das 2er-Komplement und addiere dann die beiden Zahlen. Die einzelnen Zahlen sind als positive Zahlen zu interpretieren. Um das 2er-Komplement zu bilden, müssen sie also um ein Bit erweitert werden.
 	\begin{tasks}
 		\task $1000\,0000_2 - 0001\,1111_2$
 		\task $1010\,1011_2 - 0110\,1011_2$
@@ -829,85 +834,21 @@ Das MSB entscheidet hier also darüber, ob die Zahl positiv oder negativ ist.
 \newpage
 
 \begin{question}
-	\begin{tasks}
-		\task Bestimme die grösste und kleinste Zahl, die man mit 4-Bits ausdrücken kann als Binär- und Dezimalzahl.
-		\grid{4.2}
-		\task In C\# ist ein \textbf{\textit{int}} eine positive oder negative ganze Zahl, der insgesamt 4 Bytes zur Verfügung stehen. Was ist die grösste und kleinste Zahl, die man mit einem int darstellen kann? Bestimme als Dezimalzahl.
-		\grid{5.2}
-		\task Überprüfe dein Resultat aus der letzten Aufgabe direkt in C\#: Vergrösserst (verkleinerst) du die grösste (kleine) Zahl um $1$, so musst du eine Fehlermeldung erhalten.
-		\task Was sind die Gemeinsamkeiten und Unterschiede zwischen den beiden Datentypen \textbf{\textit{int}} und \textbf{\textit{uint}}?
-		\grid{5.2}
-	\end{tasks}
+	Mit $4-$Bits sollen ganze Zahlen (also positiv und negativ) ausgedrückt werden. Bestimme die grösst- und kleinstmögliche Zahl sowohl als Binär- wie auch als Dezimalzahl.
+	\grid{8.2}
 \end{question}
-\cprotEnv\begin{solution}
-	\begin{tasks}
-		\task grösste Zahl: $0111_2 = 7_{10}$, kleinste Zahl: $1000_1 = -8_{10}$
-		\task 4 Bytes $=$ $32$ Bits:
-			\begin{itemize}
-				\item grösste Zahl: $2^{32-1} - 1 = \num{2147483647}$
-				\item kleinste Zahl: $-2^{32-1} = -\num{2147483648}$
-			\end{itemize}
-		\task 
-		\begin{itemize}
-			\item Gemeinsamkeiten: beide 4 Bytes, beide für ganze Zahlen
-			\item Unterschiede: \textbf{\textit{uint}} nur positive Zahlen, \textbf{\textit{int}} auch negative, dafür ist grösster \textbf{\textit{uint}} etwa doppelt so gross wie grösster \textbf{\textit{int}}
-		\end{itemize}
-		\task
-	\end{tasks}
-	\begin{csharp}
-		int a;
-		// kein Fehler
-		a = 2147483647;
-		a = -2147483648;
-		Console.WriteLine(a);			
-		// Fehler
-		a = 2147483648;
-		a = -2147483649;
-		Console.WriteLine(a);
-	\end{csharp}
+\begin{solution}
+	grösste Zahl: $0111_2 = 7_{10}$, kleinste Zahl: $1000_1 = -8_{10}$
 \end{solution}
-
-Möchte man mit besonders grossen oder kleinen ganzen Zahlen arbeiten, so kann man den Datentypen \textbf{\textit{long}} verwenden. Dieser stellt eine positive oder negative ganze Zahl in 8 Bytes dar.
-
-\lp{
-	\newpage
-	\section*{LP Info}
-
-	\subsection*{Beispiel Subtraktion} 
-	
-	\textbf{Lektionseinstieg}:
-	Subtraktion, wobei der Subtrahend grösser ist als der Minuend:
-	\bas 
-	011_2 - 101_2
-	= 0011_2 - 0101_2
-	= 0011_2 + 1011_2
-	= 1110_2
-	= -0010_2
-	= -010_2
-	\eas
-	Dies stimmt, da:
-	$$011_2 - 101_2 = 3 - 5 = -2$$
-	$$-010_2 = -2$$
-
-	\subsection*{Datentypen in Python}
-	
-	Ein \textbf{int} hat auch 4 Bytes zur Verfügung. Grössere ganze Zahlen werden in \textbf{long}s gespeichert. Diese haben aber keine maximale Grösse sondern können beliebig gross werden (modulo Grenzen des Computers).
-
-% 	\begin{python}
-% print(type(2147483647)) # <type 'int'>
-% print(type(2147483648)) # <type 'long'>
-% 	\end{python}	
-
-}
 
 \newpage
 
-\subsubsection{Multiplikation}
+\subsection{Multiplikation}
 
 \begin{question}
 	Auch die \textbf{schriftliche Multiplikation von Binärzahlen} ist analog zur derjenigen von Dezimalzahlen.
 	\begin{tasks}
-		\task Multipliziere zur Auflockerung zuerst folgende Multiplikation schriftlich aus:
+		\task Multipliziere zur Auflockerung zuerst folgende Multiplikation \textit{schriftlich} aus:
 		$$7905_{10} \cdot 3815_{10}$$
 		\grid{6.2}
 		\task Multipliziere nun die folgenden Binärzahlen schriftlich. Achtung: Aufpassen hier muss man mit den Überträgen am Schluss beim Aufsummieren. Ist die Summe $5$, so notiert man eine $1$ und bei der \textit{übernächsten} Stelle einen Übertrag von $1$, da $5_2 = 101_2$.
@@ -1506,7 +1447,7 @@ double d = 9.2e-6;
 %------------------------------------
 %------------------------------------
 %------------------------------------
-\end{comment}
+
 \newpage
 % SOLUTIONS
 \section*{Lösungen}
