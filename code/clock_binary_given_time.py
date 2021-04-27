@@ -1,5 +1,6 @@
 from gturtle import *
 from datetime import datetime
+import random
 
 """
 optimized version: only draws something is changes
@@ -12,6 +13,7 @@ x_dist = 3*L
 y_offset = 150
 
 dark_mode = True
+PRINT_TIME = False
 
 Options.setPlaygroundSize(600,600)
 
@@ -93,9 +95,30 @@ def show_clock(time):
         else:
             draw_square(x_offset+i*x_dist,-y_offset,"gray",2)
 
+    if PRINT_TIME:
+        print(time)
+
+def get_random_time():
+    hour   = str(random.randint(0,23))
+    minute = str(random.randint(0,59))
+    sec    = str(random.randint(0,59))
+    if len(hour) == 1:
+        hour = "0"+hour
+    if len(minute) == 1:
+        minute = "0"+minute
+    if len(sec) == 1:
+        sec = "0"+sec
+    return str(hour)+":"+str(minute)+":"+str(sec)
+
+def show_clock_random_time():
+    time = get_random_time()
+    show_clock(time)
+    msgDlg()
     print(time)
 
-show_clock("12:22:43")
+show_clock_random_time()
+
+#show_clock("12:22:43")
 #show_clock("00:00:00")
 
 
