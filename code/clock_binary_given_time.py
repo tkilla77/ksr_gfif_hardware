@@ -114,9 +114,10 @@ def show_clock_random_time():
     time = get_random_time()
     show_clock(time)
     msgDlg()
-    print(time)
+    msgDlg(time)
 
-show_clock_random_time()
+while True:
+    show_clock_random_time()
 
 #show_clock("12:22:43")
 #show_clock("00:00:00")
