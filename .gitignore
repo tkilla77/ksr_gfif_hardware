@@ -279,3 +279,5 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+.vscode/settings.json
+__latexindent_temp.tex
