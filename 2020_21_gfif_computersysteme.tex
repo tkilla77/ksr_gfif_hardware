@@ -1,0 +1,497 @@
+\input{2020_21_gfif_computersysteme_header} 
+
+%&2020_21_gfif_computersysteme_header_compiled
+
+
+% \usepackage{makecell}
+% \usepackage{pdfpages}
+
+% pdflatex -ini -job="2020_21_gfif_computersysteme_header_compiled" "&pdflatex 2020_21_gfif_computersysteme_header.tex\dump"
+
+%%% MULTIPLE VERSIONS
+% MULTIPLE LANGUAGES
+% \newif\ifen
+% \newif\ifde
+% TEACHER AND STUDENTS VERSION
+\newif\iflp
+\newif\ifsus
+
+\newcommand{\lp}[1]{\iflp\color{blue}#1\color{black}\fi} % note: \lp and \sus is already defined in commands.tex. this old version is used for legacy version. therefore, \renewcommand instead of \newcommand
+\newcommand{\sus}[1]{\ifsus#1\fi}
+\newcommand{\lpORsus}[2]{
+    \lp{#1}
+    \sus{#2}
+}
+
+% \newcommand{\en}[1]{\ifen#1\fi}
+% \newcommand{\de}[1]{\ifde#1\fi}
+% \newcommand{\enORde}[2]{
+%     \en{#1}
+%     \de{#2}
+% }
+
+% SELECT VERSION
+\lptrue\susfalse  % DEUTSCH TEACHER
+\lpfalse\sustrue  % DEUTSCH STUDENT
+
+
+
+
+% \detrue\enfalse\lptrue\susfalse  % DEUTSCH TEACHER
+% \detrue\enfalse\lpfalse\sustrue % DEUTSCH STUDENT
+% \entrue\defalse\lptrue\susfalse  % ENGLISH TEACHER
+% \entrue\defalse\lpfalse\sustrue % ENGLISH STUDENT
+
+
+
+% CHANGE TOC HEADER FOR DE VERSION
+% \de{
+	\addto\captionsenglish{% Replace "english" with the language you use
+		\renewcommand{\contentsname}%
+			{Inhaltsverzeichnis}%
+	}
+	\SetupExSheets[question]{name=Aufgabe}
+	\SetupExSheets[solution]{name=Lösung Aufgabe}
+	\NewQuSolPair{example}[name=Beispiel]{exampleSol}[name=Lösung Beispiel]
+% }
+
+% \enORde{
+% 	\usepackage[english]{babel}
+% }{
+% 	\usepackage[ngerman]{babel}
+% }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DEFINE COLORS
+\definecolor{red}{rgb}{0.6,0,0} 
+\definecolor{blue}{rgb}{0,0,0.6}
+\definecolor{green}{rgb}{0,0.8,0}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\definecolor{mypink}{rgb}{0.753,0.000,0.890}
+\definecolor{myblue}{rgb}{0.078,0.000,1.000}
+\definecolor{mybluedark}{rgb}{0.004,0.024,0.525} \definecolor{mygreen}{rgb}{0.000,0.514,0.000}
+\definecolor{myreddark}{rgb}{0.698,0.000,0.008}
+\definecolor{mycyan}{rgb}{0.000,0.506,0.612}
+\definecolor{mybrown}{rgb}{0.494,0.365,0.090}
+
+%%% DISPLAY CODE
+\usepackage{listings}
+\newcommand\pythonstyle{\lstset{
+    language=Python,
+	tabsize=4,
+	basicstyle=\normalsize\sffamily,
+	numberstyle=\color{gray},
+	stringstyle=\color{myreddark},
+    commentstyle=\color{mygreen},
+    % KEYWORDS
+    % main keywords
+	keywordstyle=\normalsize\color{myblue},%\bfseries,
+    % add keywords (main blue)
+    emph={False,None,True,self,TODO},
+    emphstyle={\color{myblue}},
+    % pink emph
+    emph={[2]assert,break,continue,del,elif ,else,except,finally,for,from,global,if,import,in,pass,raise,return,try,while,with,yield},
+    emphstyle={[2]\color{mypink}},%\bfseries,
+    %dark blue emph
+    emph={[3]execfile,reduce,xrange},
+    emphstyle={[3]\color{mybluedark}},
+    % brown emph
+    emph={[4]exec,print,isinstance,zip,enumerate,reversed,len,repr},
+    emphstyle={[4]\color{mybrown}},
+    % cyan emph
+    emph={[5]object,type,list,set,dict,tuple,str,super},
+    emphstyle={[5]\color{mycyan}},
+    % errors (also cyan emph)
+    emph={[6]Exception,NameError,IndexError,SyntaxError,TypeError,ValueError,OverflowError,ZeroDivisionError},
+    emphstyle={[6]\color{mycyan}},
+    % errors (also cyan emph)
+    emph={[7]copy,deepcopy,append,real,imag},
+    emphstyle={[7]\color{black}},
+    % 
+    showstringspaces=false,
+	breaklines=true,
+	numbers=left,
+    frame=tb,
+	xleftmargin=15pt
+}}
+
+\newcommand\pythonplainstyle{\lstset{
+    language=Python,
+	tabsize=4,
+	basicstyle=\small\sffamily,
+	numberstyle=\color{gray},
+	stringstyle=\color{black},
+    commentstyle=\color{black},
+    % KEYWORDS
+    % main keywords
+	keywordstyle=\normalsize\color{black},%\bfseries,
+    % 
+    showstringspaces=false,
+	breaklines=true,
+	numbers=left,
+    frame=tb,
+	xleftmargin=15pt
+}}
+
+\newcommand\csharpstyle{\lstset{
+	language=csh,
+	tabsize=4,
+	basicstyle=\small\sffamily,
+	numberstyle=\color{gray},
+	stringstyle=\color{myreddark},
+    commentstyle=\color{mygreen},
+	morecomment=[l]{//}, %use comment-line-style!
+	morecomment=[s]{/*}{*/}, %for multiline comments
+    % KEYWORDS
+	keywordstyle=\normalsize\color{myblue},%\bfseries,
+	morekeywords={ abstract, event, new, struct,
+		as, explicit, null, switch,
+		base, extern, object, this,
+		bool, false, operator, throw,
+		break, finally, out, true,
+		byte, fixed, override, try,
+		case, float, params, typeof,
+		catch, for, private, uint,
+		char, foreach, protected, ulong,
+		checked, goto, public, unchecked,
+		class, if, readonly, unsafe,
+		const, implicit, ref, ushort,
+		continue, in, return, using,
+		decimal, int, sbyte, virtual,
+		default, interface, sealed, volatile,
+		delegate, internal, short, void,
+		do, is, sizeof, while,
+		double, lock, stackalloc,
+		else, long, static,
+		enum, namespace, string},
+	% 
+    showstringspaces=false,
+	breaklines=true,
+	numbers=left,
+    frame=tb,
+	xleftmargin=15pt	
+}}
+
+% \newcommand\csharpstyle{\lstset{
+% 	language=csh,
+% 	basicstyle=\footnotesize\ttfamily,
+% 	numbers=left,
+% 	numberstyle=\tiny,
+% 	numbersep=5pt,
+% 	tabsize=2,
+% 	extendedchars=true,
+% 	breaklines=true,
+% 	frame=b,
+% 	stringstyle=\color{blue}\ttfamily,
+% 	showspaces=false,
+% 	showtabs=false,
+% 	xleftmargin=17pt,
+% 	framexleftmargin=17pt,
+% 	framexrightmargin=5pt,
+% 	framexbottommargin=4pt,
+% 	commentstyle=\color{green},
+% 	morecomment=[l]{//}, %use comment-line-style!
+% 	morecomment=[s]{/*}{*/}, %for multiline comments
+% 	showstringspaces=false,
+% 	morekeywords={ abstract, event, new, struct,
+% 	as, explicit, null, switch,
+% 	base, extern, object, this,
+% 	bool, false, operator, throw,
+% 	break, finally, out, true,
+% 	byte, fixed, override, try,
+% 	case, float, params, typeof,
+% 	catch, for, private, uint,
+% 	char, foreach, protected, ulong,
+% 	checked, goto, public, unchecked,
+% 	class, if, readonly, unsafe,
+% 	const, implicit, ref, ushort,
+% 	continue, in, return, using,
+% 	decimal, int, sbyte, virtual,
+% 	default, interface, sealed, volatile,
+% 	delegate, internal, short, void,
+% 	do, is, sizeof, while,
+% 	double, lock, stackalloc,
+% 	else, long, static,
+% 	enum, namespace, string},
+% 	keywordstyle=\color{cyan},
+% 	identifierstyle=\color{red},
+% 	backgroundcolor=\color{cloudwhite}
+% }}
+
+% \newcommand\csharpstyle{\lstset{
+% 	language=csh,
+% 	% basicstyle=\ttfamily\tiny,
+% 	% keywordstyle=\color{blue},
+% 	% % commentstyle=\color{comments},
+% 	% stringstyle=\color{red},
+% 	% showstringspaces=false,
+% 	% identifierstyle=\color{black},
+% 	% procnamekeys={def,class},
+% 	% tabsize=2,
+% 	% style=numbers,
+% 	% style=MyFrame,
+% 	% frame=lines, %none, line
+% 	backgroundcolor={}
+% }}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+\lstnewenvironment{pythonplain}[1][]
+{
+	\pythonplainstyle
+	\lstset{#1}
+}
+{}
+\lstnewenvironment{csharp}[1][]
+{
+	\csharpstyle
+	\lstset{#1}
+}
+{}
+
+% CODE FOR EXTERNAL FILES
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% CODE FOR INLINE
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+\newcommand\csharpinline[1]{{\csharpstyle\lstinline!#1!}}
+
+\begin{document}
+
+% \input{tex/titlepage}
+\thispagestyle{empty}
+
+\begin{center}
+	\phantom{bla}
+	\vspace{5cm}
+
+		{\Huge\courseDE: \topicDE}
+	
+	\vspace{1cm}
+
+	{\Large\teacher}
+
+	{\Large\class}
+
+	{\Large\datum}
+
+\end{center}
+
+\newpage
+
+\pagenumbering{roman}
+\sectionnumbering{arabic}
+
+
+\tableofcontents
+
+\newpage
+
+
+\pagenumbering{arabic}
+\sectionnumbering{arabic}
+
+%---------------------------------------
+%---------------------------------------
+%---------------------------------------
+
+\lp{
+	\section*{LP Info}
+
+    Materialien:
+	\begin{itemize}
+		\item \url{https://informatik.mygymer.ch/base/?book=computer}
+		\item \url{hhttps://oinf.ch/kurs/vernetzung-und-systeme/computersysteme/}
+	\end{itemize}
+    
+    Ziele:
+    \begin{itemize}
+		\item Verstehen, was ein Computer ist.
+        \begin{itemize}
+			\item Abgrenzung zw. General purpose computern, die ein Programm ausführen können, und eingeschränkten Maschinen (Digitaluhr).
+        \end{itemize}
+		\item Verstehen, was in einem Computer abläuft, wenn ein Programm ausgeführt wird:
+        \begin{itemize}
+			\item Von-Neumann-Architektur (nur ganz oberflächlich)
+            \begin{itemize}
+				\item Programm und Daten im selben Speicher
+            \end{itemize}
+			\item Instruction Cycle (Fetch decode execute)
+        \end{itemize}
+		\item Assembly code sehen und verstehen und schreiben (?)
+        \begin{itemize}
+			\item Baut auf Binär / Hex Kenntnisse auf
+			\item LittleManMachine? Computer aus dem Freifach?
+        \end{itemize}
+		\item Triade von Hardware, Betriebssystem, Programm
+        \begin{itemize}
+			\item HW: Architektur (ARM, x86…) - was heisst das für das Programm
+            \begin{itemize}
+				\item Ist unveränderbar (mehr oder weniger)
+            \end{itemize}
+			\item OS: hat direkten Zugriff auf Speicheradressen
+            \begin{itemize}
+				\item Speicher, Festplatten, Netzwerkkarten, Grafikkarten werden alle als Speicheradressen dargestellt.
+            \end{itemize}
+			\item Programm:
+            \begin{itemize}
+				\item sieht nur virtuellen Speicher (OS / CPU schreibt die Adressen um)
+				\item das OS gaukelt dem Programm vor, es sei das einzige, aber kann es jederzeit unterbrechen.
+				\item Benützt Systemressourcen über sogenannte Syscalls
+                \begin{itemize}
+					\item Netzwerk Sockets
+					\item Speicher, Dateien
+                \end{itemize}
+            \end{itemize}
+            \item Moritz:
+        \begin{itemize}
+			\item Ausgewählte HW-Komponenten:
+            \begin{itemize}
+				\item Display, RGB-Farben
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+				
+\newpage
+}
+
+\section{Was ist ein Computer?}
+Wie viele Computer befinden sich in diesem Raum? 20? 50? 100?
+
+\begin{itemize}
+	\item Ist mein Mobiltelefon ein Computer?
+	\item Meine Digitalkamera?
+	\item Meine Digitaluhr?
+	\item Der Projektor?
+	\item Die smarte Glühbirne?
+\end{itemize}
+
+Im weitesten Sinn können wir jedes Gerät, das hinreichend komplexe Programme ausführen kann, als Computer bezeichnen - also inklusive der Digitaluhr. Meist verwenden wir die Bezeichnung allerdings nur im engeren Sinn für Geräte, deren Programm nicht fix vorgegeben ist, sondern die programmierbar sind. Zunehmend finden sich vollständige Computer in Alltagsgegenständen, deren Programmier-Schnittstelle meist jedoch nur eingeschränkt zugänglich ist, oder jedenfalls sein sollte: in Kühlschränken, Heizungen, Glühbirnen, Lautsprechern…
+
+\section{Was passiert in einem Computer?}
+
+Sie können ja bereits programmieren - aber was passiert denn eigentlich, wenn der Computer ein Programm ausführt?
+
+Wir benützen zwei Abstraktionen, um einen Computer zu beschreiben: Hardware und Software.
+Hardware sind die elektronischen oder mechanischen Teile, die zu einem Gerät zusammengebaut sind. Software sind die Programme, die vom Gerät ausgeführt werden.
+
+Die Software ist normalerweise veränderbar, während die Hardware relativ statisch ist. Es gibt aber viele Ausnahmen von dieser Regel: Computerteile können zusammengebaut oder auseinandergenommen werden, und es gibt auch Software, die fest auf einen Speicherchip gebrannt sind und nicht verändert werden kann. Es ist auch möglich, die Hardware in Software zu simulieren (beispielsweise ein virtuelles Mobilgerät zu simulieren und Apps darauf laufen zu lassen).
+
+\section{Hardware}
+
+Der grösste Teil der sichtbaren Komponenten eines Computers machen oft die Ein- und Ausgabegeräte aus, mit denen eine Schnittstelle zum Menschen geschaffen wird. 
+
+\begin{question}
+    Benennen Sie die Ein- und Ausgabegeräte an Ihrem Computer oder Smartphone.
+    \grid{5.2}
+\end{question}
+\begin{solution}
+    \begin{itemize}
+        \item Display
+        \item Touchscreen
+        \item Lautsprecher
+        \item Anschlüsse (USB, Audio…)
+        \item Tasten
+        \item Mikrofon \& Kameras
+        \item Antennen
+    \end{itemize}
+\end{solution}
+
+Ein Computer ohne Ein- und Ausgabe \href{https://www.google.com/search?q=kleinster+computer+der+welt}{kann sehr klein sein}.
+Der Kern eines Computers ist vom Prinzip her immer noch sehr ähnlich aufgebaut wie die ersten Computer aus den 1930er Jahren
+ - die vorherrschende Architektur heisst auch nach \href{https://de.wikipedia.org/wiki/John_von_Neumann}{John von Neumann}
+"Von-Neumann-Architektur". Im Wesentlichen beschreibt diese einen Computer durch die folgenden vier Komponenten:
+
+\begin{itemize}
+    \item Memory (Speicher)
+    \item Central Processing Unit (CPU), bestehend aus
+        \begin{itemize}
+            \item Arithmetic Logic Unit (ALU)
+            \item Control Unit (CU)
+        \end{itemize}
+    \item Input / Output Unit (IO)
+    \item Bus
+\end{itemize}
+
+Diese Teile sind aus sogenannten Gates aufgebaut: Transistoren,
+die zwei Eingänge zu einem Ausgang logisch kombinieren.
+AND, OR, XOR, NAND -> s. Elektrotechnik-Teil im Ergänzungsfach.
+
+\subsection{Memory \& Adressen}
+
+Der Speicher (en. \emph{Memory}) speichert sowohl Daten als auch Programme. Typischerweise hat jedes Byte (8 Bit) eine eigene Adresse. Eine Adresse ist nichts anderes als eine natürliche Zahl, die die Speicherstellen durchnummeriert.
+
+\lp{Meist ist die Anzahl Adressen durch die Word-Grösse des Systems gegeben,
+ein 32-Bit-System kann also maximal 2\sup{32} Bytes (4 GiBi) adressieren, ein 64-Bit-System demzufolge
+theoretisch 2\sup{64} Bytes, also 18 Exabytes (Aufgabe…).}
+
+Nicht alle möglichen Adressen sind mit wirklichem Speicher hinterlegt. Adressen werden auch benützt, um mit alle möglichen anderen Dinge zu kommunizieren: Netzwerkkarten, Grafikkarten, Festplatten, USB-Controller…
+
+\subsection{CPU}
+
+Die Central Processing Unit besteht aus der ALU und der CU, sowie einer Anzahl Register. Neben allgemeinen Registern haben einige eine spezielle Rolle:
+\begin{itemize}
+	\item \emph{Instruction Register}: enthält die momentane Instruktion.
+	\item \emph{Program Counter} (PC): enthält die Adresse der nächsten Instruktion.
+	\item \emph{Accumulator}: Enthält das Resultat der letzten Operation.
+\end{itemize}
+
+\subsubsection{ALU}
+
+Die Arithmetic Logic Unit ist eine Rechenmaschine, die arithmetische und logische Grundoperationen wie ADD, SUB (-tract), MUL (-tiplicate) oder OR (logisches oder) und XOR ausführt.
+
+\subsubsection{CU}
+
+Die Control Unit ist der Regisseur des Computers. Sie führt den folgenden \emph{Von-Neumann-Instruktionszyklus} aus:
+
+[*** TODO: Takt, Frequenz…] 
+\begin{enumerate}
+	\item \textbf{Fetch} (lädt die nächste Instruktion von der Adresse im Program Counter (PC) ins Instruction Register, und erhöht den PC um eins).
+	\item \textbf{Decode} (die nächste Instruktion wird decodiert, d.h. die Instruktion wird aufgeteilt in die Operation des Befehlssatzes und die Operanden (Speicher oder Registeradressen).
+	\item \textbf{Execute} (die Instruktion und Operanden werden an die ALU bzw. den Speicher weitergeleitet und ausgeführt).
+\end{enumerate}
+
+Nach dem Start des Systems beginnt die CU damit, das Programm an einem definierten Startpunkt abzuarbeiten. Dieses wird vom sogenannten \emph{Firmware} bestimmt: Ein kleines Software-Programm, das fest auf einem Computerchip gespeichert ist.
+
+\subsection{Bus}
+
+Der Bus verbindet die anderen drei Komponenten miteinander. Früher war der Bus nichts anderes als parallel verlaufende, galvanisch verbundene Leitungen (Drähte, Kupferbahnen auf der Platine). Ein Bus kann aber auch komplexer sein und allerhand Verbindungslogik und eigene Prozessoren beinhalten, so zum Beispiel der USB (Universal Serial Bus). 
+
+\section{Software}
+
+Die Software sind die Programme, die von der Hardware ausgeführt werden. Wir unterscheiden \emph{Firmware} (fest auf einem Chip gespeichertes Programm, z.B. für den Start des Computers), das \emph{Betriebssystem}, und \emph{Anwendungsprogramme}.
+
+Software sind Binärcode, der von der CPU ausgeführt werden können. Vor dem Ausführen wird das Programm ins Memory geladen und der Program Counter wird auf die erste Adresse des Programms gesetzt.
+
+\subsection{Betriebssystem}
+
+Das Betriebssystem (en. \emph{Operating System} oder OS, z.B. Linux, Windows, MacOs, Android…) hat direkten Zugriff auf den Speicher und die Hardware-Adressen (z.B. die Grafikkarte oder den Netzwerk-Controller). Es startet Anwendungsprogramme und gaukelt diesen vor, sie würden exklusiv die ganze Zeit ausgeführt und hätten Zugriff auf einen grossen Speicherbereich - in Wahrheit ist es aber so, dass das OS die Programme nach belieben kurz anhält und dann wieder laufen lässt, damit alle Programme zum Zug kommen (\emph{scheduling}). Die virtuellen Speicheradressen in der Anwendung werden vom OS auf reale Speicher-Adressen umgeschrieben. Wenn eine Anwendung eine Speicheradresse verwendet, auf die sie keinen Zugriff hat, wird das Programm beendet (\emph{Zugriffsverletzung}). 
+
+Statt die Anwendungen direkt mit den Hardware-Teilen kommunizieren zu lassen, stellt das Betriebssystem ihnen höhere Abstraktionen zur Verfügung, die über sogenannte \emph{Syscalls} (Funktionsaufrufe im Betriebssystem) benutzt werden können.
+
+Häufige Abstraktionen sind:
+
+\begin{itemize}
+    \item Netzwerk-Sockets (Netzwerkverbindungen öffnen)
+    \item Dateisystem (Dateien auf der Festplatte lesen und schreiben) mit Zugriffsbeschränkungen (Benutzerrechte).
+    \item Grafikfenster (grafisches Anwendungsfenster öffnen und Inhalte darin darstellen)
+\end{itemize}
+
+
+\newpage
+
+% SOLUTIONS
+\section*{Lösungen}
+\printsolutions
+
+\end{document}
+
+
