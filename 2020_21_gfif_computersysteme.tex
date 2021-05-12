@@ -2,6 +2,7 @@
 
 %&2020_21_gfif_computersysteme_header_compiled
 
+\usepackage{enumitem}
 
 % \usepackage{makecell}
 % \usepackage{pdfpages}
@@ -469,7 +470,7 @@ Der Bus verbindet die anderen drei Komponenten miteinander. Früher war der Bus 
 
 Die Software sind die Programme, die von der Hardware ausgeführt werden. Wir unterscheiden \emph{Firmware} (fest auf einem Chip gespeichertes Programm, z.B. für den Start des Computers), das \emph{Betriebssystem}, und \emph{Anwendungsprogramme}.
 
-Software sind Binärcode, der von der CPU ausgeführt werden können. Vor dem Ausführen wird das Programm ins Memory geladen und der Program Counter wird auf die erste Adresse des Programms gesetzt.
+Software ist Binärcode, der von der CPU ausgeführt werden können. Vor dem Ausführen wird das Programm ins Memory geladen und der Program Counter wird auf die erste Adresse des Programms gesetzt.
 
 \subsection{Betriebssystem}
 
@@ -485,6 +486,86 @@ Häufige Abstraktionen sind:
     \item Grafikfenster (grafisches Anwendungsfenster öffnen und Inhalte darin darstellen)
 \end{itemize}
 
+\subsection{Maschinencode}
+
+Wir haben nun oft von \emph{Instruktionen} oder \emph{Binärcode} gesprochen. Wie sieht denn solcher Code aus? Jeder Chiphersteller definiert das \emph{Instruction Set} für seine CPUs. Wenn wir mit einer höheren Programmiersprache wie Python, C++ oder Java programmieren, übernimmt der Compiler die Übersetzung aus dem Programmcode in die Maschinensprache, also die Instruktionen für den gewählten CPU.
+
+Es ist aber auch möglich, direkt Maschinensprache zu schreiben. Eine Instruktion besteht aus der Operation und den Operanden. Als Beispiel verwenden wir den Instruktionssatz des \href{https://en.wikipedia.org/wiki/Little_man_computer}{Little-Man-Computers}, um kleine Programme zu schreiben.
+
+TODO: Intro to assembly.
+
+
+\begin{question}
+    Schreiben Sie ein Maschinencode-Programm für den Little-Man-Computer. Sie können Ihr Programm \href{https://oinf.ch/interactive/little-man-computer/}{hier} testen.
+
+    Schreiben Sie eine Email an \mail mit Ihren Lösungen.
+    \begin{tasks}
+        \task Zwei Zahlen einlesen und addieren. 
+        \task Eine Zahl einlesen, mit -1 multiplizieren und ausgeben.
+        \task (Optional) Zwei Zahlen einlesen, das Produkt ausgeben. Funktioniert die Lösung auch mit negativen Zahlen?
+    \end{tasks}
+\end{question}
+\cprotEnv\begin{solution}
+    \begin{enumerate}[label=\alph*)]
+        \item \begin{verbatim}
+    901  // Read Input 1
+    310  // Store @10
+    901  // Read Input 2
+    110  // Add Input 1
+    902  // Output result
+        \end{verbatim}
+        
+        \item  \begin{verbatim}
+    901  // Read input
+    310  // Store @10
+    210  // Subtract input twice
+    210
+    902  // Output result
+        \end{verbatim}
+
+        \item \begin{verbatim}
+    610  // Jump to program start.
+    001  // Store a useful number 1
+    000  // Input 1
+    000  // Input 2
+    000  // Result
+    504  // SUB Output: Load Result 
+    902  // Output Result
+    000  // END
+    000  // unused
+    000  // unused
+    901  // MAIN: read input
+    302  // Store in Input 1
+    507  // Load Zero
+    304  // Store in Result
+    901  // read input
+    303  // Store in Input 2
+    820  // If Input is not negative, GOTO LOOP
+    630  // ... otherwise, GOTO negation
+    000  // unused
+    000  // unused
+    705  // SUB LOOP: If Input 2 is 0, goto Output
+    201  // subtract 1 from Input 2
+    303  // Store Input 2
+    504  // Load Result
+    102  // Add Input 1
+    304  // Store Result
+    503  // Load Input 2
+    620  // GOTO LOOP
+    000  // unused
+    000  // unused
+    203  // SUB negation: subtract Input 2
+    203  // subtract Input 2 again to arrive at -1*Input 2
+    303  // Store Input 2
+    502  // Same thing for Input 1
+    202
+    202
+    302
+    503  // Load Input 2 again for loop
+    620  // GOTO LOOP (Input 2 is now positive)
+           \end{verbatim}
+    \end{enumerate}
+\end{solution}  
 
 \newpage
 
