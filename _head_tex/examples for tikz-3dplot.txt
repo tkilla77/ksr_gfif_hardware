@@ -1,8 +1,0 @@
-EXAMPLES FOR tikz-3dplot
-
-http://latex.org/know-how/440-tikz-3dplot
-
-
-info about nodes (labeling):
-https://tex.stackexchange.com/questions/16231/node-below-and-left-of-another-node-in-tikz
-
