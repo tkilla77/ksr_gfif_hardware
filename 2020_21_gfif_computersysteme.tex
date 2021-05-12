@@ -78,11 +78,15 @@
 
 %%% DISPLAY CODE
 \usepackage{listings}
+% Don't include line numbers into the copied text of listings.
+\usepackage{accsupp}% http://ctan.org/pkg/accsupp
+\newcommand{\emptyaccsupp}[1]{\BeginAccSupp{ActualText={}}#1\EndAccSupp{}}
+
 \newcommand\pythonstyle{\lstset{
     language=Python,
 	tabsize=4,
 	basicstyle=\normalsize\sffamily,
-	numberstyle=\color{gray},
+	numberstyle=\color{gray}\tiny\emptyaccsupp,
 	stringstyle=\color{myreddark},
     commentstyle=\color{mygreen},
     % KEYWORDS
@@ -121,7 +125,7 @@
     language=[x86masm]Assembler,
 	tabsize=4,
 	basicstyle=\normalsize\ttfamily,
-	numberstyle=\color{gray}\tiny,
+	numberstyle=\color{gray}\tiny\emptyaccsupp,
 	firstnumber=0,
 	stringstyle=\color{myreddark},
     commentstyle=\color{mygreen},
@@ -155,7 +159,7 @@
 	language=csh,
 	tabsize=4,
 	basicstyle=\small\sffamily,
-	numberstyle=\color{gray},
+	numberstyle=\color{gray}\tiny\emptyaccsupp,
 	stringstyle=\color{myreddark},
     commentstyle=\color{mygreen},
 	morecomment=[l]{//}, %use comment-line-style!
@@ -471,18 +475,24 @@ Die Central Processing Unit besteht aus der ALU und der CU, sowie einer Anzahl R
 
 Die Arithmetic Logic Unit ist eine Rechenmaschine, die arithmetische und logische Grundoperationen wie ADD, SUB (-tract), MUL (-tiplicate) oder OR (logisches oder) und XOR ausführt.
 
+Mehr zur Funktion einer ALU, und wie eine solche Schaltung mit einer elektronischen Schaltung aufgebaut werden kann, erfahren Sie im Ergänzungsfach Informatik, oder z.B. \href{https://informatik.mygymer.ch/ef2019/rechnen-mit-strom}{hier}.
+
 \subsubsection{CU}
 
 Die Control Unit ist der Regisseur des Computers. Sie führt den folgenden \emph{Von-Neumann-Instruktionszyklus} aus:
 
-[*** TODO: Takt, Frequenz…] 
+\lp{
+	[*** TODO: Takt, Frequenz…] 
+}
+
 \begin{enumerate}
 	\item \textbf{Fetch} (lädt die nächste Instruktion von der Adresse im Program Counter (PC) ins Instruction Register, und erhöht den PC um eins).
 	\item \textbf{Decode} (die nächste Instruktion wird decodiert, d.h. die Instruktion wird aufgeteilt in die Operation des Befehlssatzes und die Operanden (Speicher oder Registeradressen).
 	\item \textbf{Execute} (die Instruktion und Operanden werden an die ALU bzw. den Speicher weitergeleitet und ausgeführt).
 \end{enumerate}
 
-Nach dem Start des Systems beginnt die CU damit, das Programm an einem definierten Startpunkt abzuarbeiten. Dieses wird vom sogenannten \emph{Firmware} bestimmt: Ein kleines Software-Programm, das fest auf einem Computerchip gespeichert ist.
+Nach dem Start des Systems beginnt die CU damit, das Programm an einem definierten Startpunkt abzuarbeiten. Dieses wird vom sogenannten \emph{Bootloader} bestimmt: Ein kleines Software-Programm, das fest auf einem Computerchip gespeichert ist (\emph{Firmware}). Der Bootloader lädt dann
+das Betriebssystem von der Festplatte und startet es.
 
 \subsection{Bus}
 
@@ -589,7 +599,7 @@ Mit Verzweigungsinstruktionen (6xx, 7xx, 8xx) können Schleifen und Bedingungen 
 \end{solution}
 
 Ein Programm ist also nichts anderes als eine Folge von Zahlen (im Binärformat, natürlich), die Instruktionen codieren.
-    
+
 
 \begin{question}
     Schreiben Sie ein Maschinencode-Programm für den Little-Man-Computer. Sie können Ihr Programm \href{https://oinf.ch/interactive/little-man-computer/}{hier} testen.
@@ -598,7 +608,8 @@ Ein Programm ist also nichts anderes als eine Folge von Zahlen (im Binärformat,
     \begin{tasks}
         \task Zwei Zahlen einlesen und addieren. 
         \task Eine Zahl einlesen, mit -1 multiplizieren und ausgeben.
-        \task (Optional) Zwei Zahlen einlesen, das Produkt ausgeben. Funktioniert die Lösung auch mit negativen Zahlen?
+        \task (**Optional) Zwei Zahlen einlesen, das Produkt ausgeben. Funktioniert die Lösung auch mit negativen Zahlen?
+		\task (*** Optional) Schreiben Sie einen Bootloader, der ein Programm aus dem Input liest und ab Adresse 30 in den Speicher schreibt. Wenn eine 000 (HALT) gelesen wird, soll das eingelesene Programm ausgeführt werden.
     \end{tasks}
 \end{question}
 \cprotEnv\begin{solution}
@@ -655,18 +666,41 @@ Ein Programm ist also nichts anderes als eine Folge von Zahlen (im Binärformat,
 620  ; GOTO LOOP
 000  ; unused
 000  ; unused
-203  ; SUB negation: subtract Input 2
-203  ; subtract Input 2 again to arrive at -1*Input 2
+507  ; SUB negation: Load Zero
+203  ; subtract Input 2 at -1*Input 2
 303  ; Store Input 2
-502  ; Same thing for Input 1
-202
+507  ; Same thing for Input 1
 202
 302
 503  ; Load Input 2 again for loop
 620  ; GOTO LOOP (Input 2 is now positive)
            \end{assembly}
+		\item Die Speicheradresse für die Store-Instruktion (3xx) in Zeile 7 muss im laufenden Programm geändert werden\dots
+\begin{assembly}
+603  ; GOTO main
+000  ; DAT zero
+001  ; DAT one
+501  ; SUB main: LDA null
+330  ; STA null to have a guaranteed HALT
+901  ; SUB loop: INP
+712  ; GOTO finalize if input is 0
+330  ; STA input to next address
+507  ; LDA store address instruction
+102  ; ADD 1 to store address instruction
+307  ; STA (save incremented store address instruction)
+605  ; GOTO loop
+507  ; SUB finalize: LDA next address instruction
+315  ; STA address save instruction to current address + 2
+501  ; LDA zero
+000  ; Target fo the STA instruction
+630  ; GOTO the read program
+		\end{assembly}			
     \end{enumerate}
-\end{solution}  
+\end{solution}
+
+\subsubsection{Diskussion Maschinencode \& Von-Neumann-Architektur}
+
+Was ist Ihnen bei der Arbeit mit Maschinen-Code aufgefallen? Wer hat nie fälschlicherweise einen Datenwert im Speicher als Code behandelt und ausgeführt? Eine ganze Klasse von Sicherheitsproblemen basiert genau auf solchen Programmierfehlern: mit geschickter Eingabe wird eine Instruktion überschrieben mit einer Branch-Instruktion, die dann Code ausführt, der ebenfalls aus einer Benutzereingabe stammt.
 
 \newpage
 
