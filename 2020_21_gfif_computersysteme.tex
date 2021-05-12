@@ -543,9 +543,9 @@ Dieses einfache Programm gibt die Differenz von zwei Zahlen (Inputs) aus:
 Das Assembly-Programm entspricht also ungefähr folgendem Python-Code:
 
 \begin{python}
-	input1 = int(input())
-	input2 = int(input())
-	print(input1 - input2)
+input1 = int(input())
+input2 = int(input())
+print(input1 - input2)
 \end{python}
 
 Mit Verzweigungsinstruktionen (6xx, 7xx, 8xx) können Schleifen und Bedingungen umgesetzt werden. 
@@ -554,46 +554,46 @@ Mit Verzweigungsinstruktionen (6xx, 7xx, 8xx) können Schleifen und Bedingungen 
 	Was macht das folgende Programm? Beginnen Sie damit, für jede Zeile den Befehl zu decodieren. Überlegen Sie dann, was das Programm macht. Sie können den implementierten Algorithmus in natürlicher Sprache oder in Python beschreiben.
 
 	\begin{assembly}
-		901
-		310
-		901
-		311
-		210
-		809
-		510
-		902
-		000
-		511
-		902
-		000
+901
+310
+901
+311
+210
+809
+510
+902
+000
+511
+902
+000
 	\end{assembly}
 \end{question}
 \cprotEnv\begin{solution}
 	Das Programm mit decodierten Instruktionen:
 	\begin{assembly}
-		901  ; Read Input 1
-		310  ; Store @10
-		901  ; Read Input 2
-		311  ; Store @11
-		210  ; Subtract Input 1@10 from Input 2
-		809  ; Branch to address 09 if Accumulator is >= 0
-		510  ; else: load Input 1
-		902  ; Output Input 1
-		000  ; HALT
-		511  ; Branch target: load Input 2
-		902  ; Output Input 2
-		000  ; HALT
+901  ; Read Input 1
+310  ; Store @10
+901  ; Read Input 2
+311  ; Store @11
+210  ; Subtract Input 1@10 from Input 2
+809  ; Branch to address 09 if Accumulator is >= 0
+510  ; else: load Input 1
+902  ; Output Input 1
+000  ; HALT
+511  ; Branch target: load Input 2
+902  ; Output Input 2
+000  ; HALT
 	\end{assembly}
 
 	Das Programm gibt die höhere von zwei Zahlen aus. In Python:
 	\begin{python}
-		input1 = int(input())
-		input2 = int(input())
-		if input1 < input2:
-			result = input2
-		else:
-			result = input1
-		print(result)
+input1 = int(input())
+input2 = int(input())
+if input1 < input2:
+	result = input2
+else:
+	result = input1
+print(result)
 	\end{python}
 	
 \end{solution}
