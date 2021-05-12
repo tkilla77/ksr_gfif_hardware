@@ -1,0 +1,89 @@
+%\documentclass[twoside]{article}
+\documentclass[a4paper,11pt,twoside]{article}
+\usepackage{a4wide}
+
+
+%\usepackage[german]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{wrapfig} % wrap text around figures
+\usepackage{fancyhdr} % for a fancy header and footer
+\usepackage{datetime}
+\usepackage{color}
+\usepackage{float} %without it, tables position more or less random, with this an writing \begin{table}[H] the table appears right where it is defined!
+\usepackage[table,xcdraw]{xcolor}
+
+\usepackage{tabularx}
+\usepackage{multicol}
+
+\usepackage{subcaption} % for subfigures
+
+\usepackage[symbol]{footmisc} % footnote: use symbols instead numbers
+
+\usepackage{enumitem}
+
+\usepackage{amsthm}
+\usepackage{bm}
+
+\newcommand{\sectionnumbering}[1]{% to swich to roman pagenumbering at abstract and table of content
+  \setcounter{section}{0}%
+  \renewcommand{\thesection}{\csname #1\endcsname{section}}}
+
+\usepackage{verbatim} % for multiple line comments; \begin{comment} write comment \end{comment}
+
+\usepackage{tikz} %use for tikzpicture to draw lines usw
+\usetikzlibrary{backgrounds,angles,quotes}
+\usepackage{tkz-euclide} % http://mirror.easyname.at/ctan/macros/latex/contrib/tkz/tkz-euclide/doc/TKZdoc-euclide.pdf
+\usepackage{tikz-3dplot}
+\usetikzlibrary{babel}
+%\usetkzobj{all} %%% IMPORTANT ATTENTION: Commented this out when switching Windows -> Mac
+
+%\usepackage{lipsum}
+
+\usepackage{siunitx} % for writing numbers with units
+% e.g. \SI{6.3e8}{km}, \ang{62.59}, \num{100}'s \si{km}, \SI{53}{\degree}
+
+\usepackage{exsheets} %http://mirror.switch.ch/ftp/mirror/tex/macros/latex/contrib/exsheets/exsheets_en.pdf
+%\usepackage{tasks} % needs not be loaded if 'exsheets' is loaded (is part of exsheets). for typical ordering of math exercises, https://www.ctan.org/tex-archive/macros/latex/contrib/tasks?lang=de
+
+
+% tables
+\usepackage{multirow} % multirows in tables
+\usepackage{booktabs}
+%\usepackage{savefnmark}
+%\usepackage{fmtcount}
+
+\usepackage{adjustbox} % rotate stuff
+
+\usepackage{polynom} % polynomdivision usw
+
+\usepackage{pgf,tikz}
+\usepackage{mathrsfs}\usetikzlibrary{arrows}
+\usepackage{pgfplots} % for plotting fcns e.g. arcsin...
+
+\usepackage{tagging}
+
+% to show lines for handwriting
+\usepackage{pgffor, ifthen}
+\newcommand{\notes}[3][\empty]{%
+    \noindent \vspace{10pt}\\
+    \foreach \n in {1,...,#2}{%
+        \ifthenelse{\equal{#1}{\empty}}
+            {\rule{#3}{0.5pt}\\}
+            {\rule{#3}{0.5pt}\vspace{#1}\\}
+        }
+}
+% create empty space to solve exercises:
+%
+\newcommand{\notesempty}[2][\empty]{%
+    \noindent \vspace{10pt}\\
+    \foreach \n in {1,...,#2}{%
+        \ifthenelse{\equal{#1}{\empty}}
+            {\\}
+            {\vspace{#1}\\}
+        }
+}
+
+\usepackage{hyperref}   % Hyperlinks
+\usepackage{cleveref}

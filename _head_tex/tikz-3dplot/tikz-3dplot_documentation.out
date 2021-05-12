@@ -1,0 +1,27 @@
+\BOOKMARK [0][-]{section*.1}{Contents}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Overview of the tikz-3dplot Package}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.1}{What tikz-3dplot is}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.2}{What tikz-3dplot is not}{section.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.1.3}{Similar Work}{section.1.1}% 6
+\BOOKMARK [1][-]{section.1.2}{Installing the tikz-3dplot Package}{chapter.1}% 7
+\BOOKMARK [2][-]{subsection.1.2.1}{tikz-3dplot Requirements}{section.1.2}% 8
+\BOOKMARK [2][-]{subsection.1.2.2}{tikz-3dplot Package Options}{section.1.2}% 9
+\BOOKMARK [1][-]{section.1.3}{Using the tikz-3dplot Package}{chapter.1}% 10
+\BOOKMARK [0][-]{chapter.2}{Overview of 3d in tikz-3dplot}{}% 11
+\BOOKMARK [1][-]{section.2.1}{TikZ 3d Plotting}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.2}{The tikz-3dplot Main Coordinate System}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.3}{The tikz-3dplot Rotated Coordinate System}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.4}{Arcs in 3d, and the ``Theta Plane''}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{Using the tikz-3dplot Package}{}% 16
+\BOOKMARK [1][-]{section.3.1}{The tikz-3dplot TikZ Styles}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.1.1}{tdplot\137main\137coords}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.2}{tdplot\137rotated\137coords}{section.3.1}% 19
+\BOOKMARK [2][-]{subsection.3.1.3}{tdplot\137screen\137coords}{section.3.1}% 20
+\BOOKMARK [1][-]{section.3.2}{The tikz-3dplot Commands}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.3}{Coordinate Configuration Commands}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.3.1}{tdplotsetmaincoords}{section.3.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.2}{tdplotsetrotatedcoords}{section.3.3}% 24
+\BOOKMARK [2][-]{subsection.3.3.3}{tdplotsetrotatedcoordsorigin}{section.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.4}{tdplotresetrotatedcoordsorigin}{section.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.5}{tdplotsetthetaplanecoords}{section.3.3}% 27
