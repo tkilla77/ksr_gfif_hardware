@@ -3,6 +3,8 @@
 %&2020_21_gfif_computersysteme_header_compiled
 
 \usepackage{enumitem}
+% Enable modern fonts
+\usepackage[T1]{fontenc}
 
 % \usepackage{makecell}
 % \usepackage{pdfpages}
@@ -32,7 +34,7 @@
 % }
 
 % SELECT VERSION
-\lptrue\susfalse  % DEUTSCH TEACHER
+% \lptrue\susfalse  % DEUTSCH TEACHER
 \lpfalse\sustrue  % DEUTSCH STUDENT
 
 
@@ -336,7 +338,7 @@
     Materialien:
 	\begin{itemize}
 		\item \url{https://informatik.mygymer.ch/base/?book=computer}
-		\item \url{hhttps://oinf.ch/kurs/vernetzung-und-systeme/computersysteme/}
+		\item \url{https://oinf.ch/kurs/vernetzung-und-systeme/computersysteme/}
 	\end{itemize}
     
     Ziele:
@@ -378,15 +380,15 @@
 					\item Speicher, Dateien
                 \end{itemize}
             \end{itemize}
-            \item Moritz:
-        \begin{itemize}
-			\item Ausgewählte HW-Komponenten:
-            \begin{itemize}
-				\item Display, RGB-Farben
-            \end{itemize}
         \end{itemize}
-    \end{itemize}
-				
+	\end{itemize}				
+	Kommentare Moritz:
+	\begin{itemize}
+		\item Ausgewählte HW-Komponenten:
+		\begin{itemize}
+			\item Display, RGB-Farben
+		\end{itemize}
+	\end{itemize}
 \newpage
 }
 
@@ -432,9 +434,9 @@ Der grösste Teil der sichtbaren Komponenten eines Computers machen oft die Ein-
     \end{itemize}
 \end{solution}
 
-Ein Computer ohne Ein- und Ausgabe \href{https://www.google.com/search?q=kleinster+computer+der+welt}{kann sehr klein sein}.
+Ein Computer ohne Ein- und Ausgabe kann sehr klein sein\footnote{\url{https://www.google.com/search?q=kleinster+computer+der+welt}}.
 Der Kern eines Computers ist vom Prinzip her immer noch sehr ähnlich aufgebaut wie die ersten Computer aus den 1930er Jahren
- - die vorherrschende Architektur heisst auch nach \href{https://de.wikipedia.org/wiki/John_von_Neumann}{John von Neumann}
+ - die vorherrschende Architektur heisst auch nach John von Neumann\footnote{\url{https://de.wikipedia.org/wiki/John_von_Neumann}}
 "Von-Neumann-Architektur". Im Wesentlichen beschreibt diese einen Computer durch die folgenden vier Komponenten:
 
 \begin{itemize}
@@ -450,15 +452,15 @@ Der Kern eines Computers ist vom Prinzip her immer noch sehr ähnlich aufgebaut 
 
 Diese Teile sind aus sogenannten Gates aufgebaut: Transistoren,
 die zwei Eingänge zu einem Ausgang logisch kombinieren.
-AND, OR, XOR, NAND -> s. Elektrotechnik-Teil im Ergänzungsfach.
+AND, OR, XOR, NAND -> s. Elektrotechnik-Teil im Ergänzungs\-fach.
 
 \subsection{Memory \& Adressen}
 
 Der Speicher (en. \emph{Memory}) speichert sowohl Daten als auch Programme. Typischerweise hat jedes Byte (8 Bit) eine eigene Adresse. Eine Adresse ist nichts anderes als eine natürliche Zahl, die die Speicherstellen durchnummeriert.
 
 \lp{Meist ist die Anzahl Adressen durch die Word-Grösse des Systems gegeben,
-ein 32-Bit-System kann also maximal 2\sup{32} Bytes (4 GiBi) adressieren, ein 64-Bit-System demzufolge
-theoretisch 2\sup{64} Bytes, also 18 Exabytes (Aufgabe…).}
+ein 32-Bit-System kann also maximal $2^{32}$ Bytes (4 GiBi) adressieren, ein 64-Bit-System demzufolge
+theoretisch $2 ^ {64}$ Bytes, also 18 Exabytes (Aufgabe…).}
 
 Nicht alle möglichen Adressen sind mit wirklichem Speicher hinterlegt. Adressen werden auch benützt, um mit alle möglichen anderen Dinge zu kommunizieren: Netzwerkkarten, Grafikkarten, Festplatten, USB-Controller…
 
@@ -475,7 +477,7 @@ Die Central Processing Unit besteht aus der ALU und der CU, sowie einer Anzahl R
 
 Die Arithmetic Logic Unit ist eine Rechenmaschine, die arithmetische und logische Grundoperationen wie ADD, SUB (-tract), MUL (-tiplicate) oder OR (logisches oder) und XOR ausführt.
 
-Mehr zur Funktion einer ALU, und wie eine solche Schaltung mit einer elektronischen Schaltung aufgebaut werden kann, erfahren Sie im Ergänzungsfach Informatik, oder z.B. \href{https://informatik.mygymer.ch/ef2019/rechnen-mit-strom}{hier}.
+Mehr zur Funktion einer ALU, und wie eine solche Schaltung mit einer elektronischen Schaltung aufgebaut werden kann, erfahren Sie im Ergänzungsfach Informatik, oder z.B. hier\footnote{\url{https://informatik.mygymer.ch/ef2019/rechnen-mit-strom}}.
 
 \subsubsection{CU}
 
@@ -530,14 +532,16 @@ Der Computer hat je eine Input- und eine Output-Sequenz. Mit der Instrution \tex
 
 Dieses einfache Programm gibt die Differenz von zwei Zahlen (Inputs) aus:
 \begin{assembly}
-901  ; Read Input 1
-310  ; Store @10
-901  ; Read Input 2
-311  ; Store @11
-510  ; Load Input 1@10
-211  ; Subtract Input 2@11 from Input 1
-902  ; Output result
-000  ; HALT
+    INP     // 901  ; Read Input 1
+    STA IN1 // 308  ; Store IN1@8
+    INP     // 901  ; Read Input 2
+    STA IN2 // 309  ; Store IN2@9
+    LDA IN1 // 508  ; Load IN1
+    SUB IN2 // 209  ; Subtract Input 2@11 from Input 1
+    OUT     // 902  ; Output result
+    HLT     // 000  ; HALT
+IN1 DAT		// Storage address for Input 1
+IN2 DAT		// Storage address for Input 2
 \end{assembly}
 
 Das Assembly-Programm entspricht also ungefähr folgendem Python-Code:
@@ -551,38 +555,42 @@ print(input1 - input2)
 Mit Verzweigungsinstruktionen (6xx, 7xx, 8xx) können Schleifen und Bedingungen umgesetzt werden. 
 
 \cprotEnv\begin{question}
-	Was macht das folgende Programm? Beginnen Sie damit, für jede Zeile den Befehl zu decodieren. Überlegen Sie dann, was das Programm macht. Sie können den implementierten Algorithmus in natürlicher Sprache oder in Python beschreiben.
+	Was macht das folgende Programm? Beginnen Sie damit, für jede Zeile den Befehl zu beschreiben. Überlegen Sie dann, was das Programm macht. Sie können den implementierten Algorithmus in natürlicher Sprache oder in Python beschreiben.
 
 	\begin{assembly}
-901
-310
-901
-311
-210
-809
-510
-902
-000
-511
-902
-000
-	\end{assembly}
+	INP    
+	STA IN1
+	INP    
+	STA IN2
+	SUB IN1
+	BRP ONE
+	LDA IN1
+	OUT    
+	HLT    
+ONE LDA IN2
+	OUT    
+	HLT    
+IN1 DAT
+IN2 DAT
+		\end{assembly}
 \end{question}
-\cprotEnv\begin{solution}
+\cprotEnv\begin{solution}\lp{
 	Das Programm mit decodierten Instruktionen:
 	\begin{assembly}
-901  ; Read Input 1
-310  ; Store @10
-901  ; Read Input 2
-311  ; Store @11
-210  ; Subtract Input 1@10 from Input 2
-809  ; Branch to address 09 if Accumulator is >= 0
-510  ; else: load Input 1
-902  ; Output Input 1
-000  ; HALT
-511  ; Branch target: load Input 2
-902  ; Output Input 2
-000  ; HALT
+	INP     // 901  ; Read Input 1
+	STA IN1 // 312  ; Store IN1
+	INP     // 901  ; Read Input 2
+	STA IN2 // 313  ; Store IN2
+	SUB IN1 // 212  ; Subtract Input 1 from Input 2
+	BRP ONE // 809  ; Branch to ONE if Accumulator is >= 0
+	LDA IN1 // 512  ; else: load Input 1
+	OUT     // 902  ; Output Input 1
+	HLT     // 000  ; HALT
+ONE LDA IN2 // 513  ; Branch target: load Input 2
+	OUT     // 902  ; Output Input 2
+	HLT     // 000  ; HALT
+IN1 DAT
+IN2 DAT
 	\end{assembly}
 
 	Das Programm gibt die höhere von zwei Zahlen aus. In Python:
@@ -595,14 +603,14 @@ else:
 	result = input1
 print(result)
 	\end{python}
-	
+}	
 \end{solution}
 
 Ein Programm ist also nichts anderes als eine Folge von Zahlen (im Binärformat, natürlich), die Instruktionen codieren.
 
 
 \begin{question}
-    Schreiben Sie ein Maschinencode-Programm für den Little-Man-Computer. Sie können Ihr Programm \href{https://oinf.ch/interactive/little-man-computer/}{hier} testen.
+    Schreiben Sie ein Maschinencode-Programm für den Little-Man-Computer. Sie können Ihr Programm bei \url{http://www.peterhigginson.co.uk/LMC/} testen.
 
     Schreiben Sie eine Email an \mail{} mit Ihren Lösungen.
     \begin{tasks}
@@ -613,89 +621,91 @@ Ein Programm ist also nichts anderes als eine Folge von Zahlen (im Binärformat,
     \end{tasks}
 \end{question}
 \cprotEnv\begin{solution}
-    \begin{enumerate}[label=\alph*)]
+	\lp{    \begin{enumerate}[label=\alph*)]
         \item Summe von zwei Inputs.
 		\begin{assembly}
-901  ; Read Input 1
-310  ; Store @10
-901  ; Read Input 2
-110  ; Add Input 1
-902  ; Output result
-000  ; HALT
+	INP     // 901  ; Read Input 1
+	STA IN1 // 306  ; Store @6
+	INP     // 901  ; Read Input 2
+	ADD IN1 // 106  ; Add Input 1
+	OUT     // 902  ; Output result
+	HLT     // 000  ; HALT
+IN1 DAT
         \end{assembly}
         
         \item  -1*Input = Input - Input - Input. Alternativ könnte auch eine Null gespeichert werden und davon die Eingabe subtrahiert werden.
 			 \begin{assembly}
-901  ; Read input
-310  ; Store @10
-210  ; Subtract input twice
-210
-902  ; Output result
-000  ; HALT
-        \end{assembly}
+	INP     // 901  ; Read input
+	STA IN1 // 306  ; Store @6
+	SUB IN1 // 206  ; Subtract input twice
+	SUB IN1 // 206
+	OUT     // 902  ; Output result
+	HLT     // 000  ; HALT
+IN1 DAT
+			\end{assembly}
 
-        \item Wir benützen einen bedingungslosen Sprung zu Beginn um danach Platz für die Variablen zu lassen.
+        \item Multiplikation mittels repetierter Addition.
 			\begin{assembly}
-610  ; Jump to program start.
-001  ; Store a useful number 1
-000  ; Input 1
-000  ; Input 2
-000  ; Result
-504  ; SUB Output: Load Result 
-902  ; Output Result
-000  ; END
-000  ; unused
-000  ; unused
-901  ; MAIN: read input
-302  ; Store in Input 1
-507  ; Load Zero
-304  ; Store in Result
-901  ; read input
-303  ; Store in Input 2
-820  ; If Input is not negative, GOTO LOOP
-630  ; ... otherwise, GOTO negation
-000  ; unused
-000  ; unused
-705  ; SUB LOOP: If Input 2 is 0, goto Output
-201  ; subtract 1 from Input 2
-303  ; Store Input 2
-504  ; Load Result
-102  ; Add Input 1
-304  ; Store Result
-503  ; Load Input 2
-620  ; GOTO LOOP
-000  ; unused
-000  ; unused
-507  ; SUB negation: Load Zero
-203  ; subtract Input 2 at -1*Input 2
-303  ; Store Input 2
-507  ; Same thing for Input 1
-202
-302
-503  ; Load Input 2 again for loop
-620  ; GOTO LOOP (Input 2 is now positive)
+// Multiply: read two inputs
+MAIN INP
+	STA IN1
+	LDA ZERO
+	STA RES
+	INP
+	STA IN2
+// Branch to LOOP unless IN2 negative
+	BRP LOOP
+// Otherwise, negate operands
+	BRA NEG
+// Loop: if IN2 != 0, subtract one from IN2 and add IN1 to result
+LOOP BRZ END
+	SUB ONE
+	STA IN2
+	LDA RES
+	ADD IN1
+	STA RES
+	LDA IN2
+	BRA LOOP
+// End: load result and output
+END LDA RES
+	OUT
+ZERO HLT
+// Negate: negate both operands if IN2 is negative
+NEG LDA ZERO
+	SUB IN1
+	STA IN1
+	LDA ZERO
+	SUB IN2
+	STA IN2
+	BRA LOOP
+// Data
+ONE DAT 1
+IN1 DAT
+IN2 DAT
+RES DAT				
            \end{assembly}
-		\item Die Speicheradresse für die Store-Instruktion (3xx) in Zeile 7 muss im laufenden Programm geändert werden\dots
+		\item Die Speicheradresse für die Store-Instruktion (STR) in Zeile 4 muss im laufenden Programm geändert werden\dots
 \begin{assembly}
-603  ; GOTO main
-000  ; DAT zero
-001  ; DAT one
-501  ; SUB main: LDA null
-330  ; STA null to have a guaranteed HALT
-901  ; SUB loop: INP
-712  ; GOTO finalize if input is 0
-330  ; STA input to next address
-507  ; LDA store address instruction
-102  ; ADD 1 to store address instruction
-307  ; STA (save incremented store address instruction)
-605  ; GOTO loop
-507  ; SUB finalize: LDA next address instruction
-315  ; STA address save instruction to current address + 2
-501  ; LDA zero
-000  ; Target fo the STA instruction
-630  ; GOTO the read program
+	 LDA ZERO  // 514  ; LDA zero
+	 STA BOOT  // 316  ; STA null to have a guaranteed HALT
+LOOP INP       // 901  ; SUB loop: read input
+	 BRZ FIN   // 709  ; GOTO finalize if input is 0
+STR  STA BOOT  // 316  ; Storage instruction
+	 LDA STR   // 504  ; store address instruction
+	 ADD ONE   // 115  ; ADD 1 to store address instruction
+	 STA STR   // 304  ; Change program
+	 BRA LOOP  // 602  ; GOTO LOOP
+FIN  LDA STR   // 504  ; SUB finalize: Load STR
+	 STA NXT   // 312  ; Store STR to NXT
+	 LDA ZERO  // 514  ; Load zero
+NXT  HLT       // 000  ; Target fo the STA instruction
+	 BRA BOOT  // 616  ; GOTO the read program
+ZERO DAT 0
+ONE  DAT 1
+BOOT HLT       // Input is saved here and executed...
 		\end{assembly}			
     \end{enumerate}
+	}
 \end{solution}
 
 \subsubsection{Diskussion Maschinencode \& Von-Neumann-Architektur}
