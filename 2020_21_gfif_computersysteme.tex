@@ -504,8 +504,6 @@ Der Bus verbindet die anderen drei Komponenten miteinander. Früher war der Bus 
 
 Die Software sind die Programme, die von der Hardware ausgeführt werden. Wir unterscheiden \emph{Firmware} (fest auf einem Chip gespeichertes Programm, z.B. für den Start des Computers), das \emph{Betriebssystem}, und \emph{Anwendungsprogramme}.
 
-Software ist Binärcode, der von der CPU ausgeführt werden können. Vor dem Ausführen wird das Programm ins Memory geladen und der Program Counter wird auf die erste Adresse des Programms gesetzt.
-
 \subsection{Betriebssystem}
 
 Das Betriebssystem (en. \emph{Operating System} oder OS, z.B. Linux, Windows, MacOs, Android…) hat direkten Zugriff auf den Speicher und die Hardware-Adressen (z.B. die Grafikkarte oder den Netzwerk-Controller). Es startet Anwendungsprogramme und gaukelt diesen vor, sie würden exklusiv die ganze Zeit ausgeführt und hätten Zugriff auf einen grossen Speicherbereich - in Wahrheit ist es aber so, dass das OS die Programme nach belieben kurz anhält und dann wieder laufen lässt, damit alle Programme zum Zug kommen (\emph{scheduling}). Die virtuellen Speicheradressen in der Anwendung werden vom OS auf reale Speicher-Adressen umgeschrieben. Wenn eine Anwendung eine Speicheradresse verwendet, auf die sie keinen Zugriff hat, wird das Programm beendet (\emph{Zugriffsverletzung}). 
@@ -524,11 +522,11 @@ Häufige Abstraktionen sind:
 
 Wir haben nun oft von \emph{Instruktionen} oder \emph{Binärcode} gesprochen. Wie sieht denn solcher Code aus? Jeder Chiphersteller definiert das \emph{Instruction Set} für seine CPUs. Wenn wir mit einer höheren Programmiersprache wie Python, C++ oder Java programmieren, übernimmt der Compiler die Übersetzung aus dem Programmcode in die Maschinensprache, also die Instruktionen für den gewählten CPU.
 
-Es ist aber auch möglich, direkt Maschinensprache zu schreiben. Eine Instruktion besteht aus der Operation und den Operanden. Als Beispiel verwenden wir den Instruktionssatz des \href{https://en.wikipedia.org/wiki/Little_man_computer}{Little-Man-Computers}, um kleine Programme zu schreiben.
+Es ist aber auch möglich, direkt Maschinensprache zu schreiben. Eine Instruktion besteht aus der Operation und den Operanden. Als Beispiel verwenden wir den Instruktionssatz des Little-Man-Computers\footnote{\url{https://en.wikipedia.org/wiki/Little_man_computer}} (LMC), um kleine Programme zu schreiben.
 
 Der Little-Man-Computer hat zwei Register, den \emph{Program Counter} (Speicherzeiger) der auf die nächste Instruktion zeigt, und den \emph{Accumulator}, der den momentanen Wert speichert.
 
-Der Computer hat je eine Input- und eine Output-Sequenz. Mit der Instrution \texttt{901} wird der nächste Input in den Accumulator gelesen. Mit \texttt{902} wird der Wert im Accumulator ausgegeben. Die weiteren Instruktionen entnehmen Sie obigem Link.
+Der LMC hat je eine Input- und eine Output-Sequenz. Mit der Instruktion \texttt{901} wird der nächste Input in den Accumulator gelesen. Mit \texttt{902} wird der Wert im Accumulator ausgegeben. Die weiteren Instruktionen entnehmen Sie obigem Link.
 
 Dieses einfache Programm gibt die Differenz von zwei Zahlen (Inputs) aus:
 \begin{assembly}
@@ -552,7 +550,22 @@ input2 = int(input())
 print(input1 - input2)
 \end{python}
 
-Mit Verzweigungsinstruktionen (6xx, 7xx, 8xx) können Schleifen und Bedingungen umgesetzt werden. 
+\subsubsection{Labels}
+Im obigen Programm verwenden wir die Labels \texttt{IN1} und \texttt{IN2}. Bei der Übersetzung in Maschinencode werden die Labels mit der Zeilenummer (= Speicheradresse) ersetzt, an der das Label definiert wird, also \texttt{IN1} mit 8. Statt \texttt{STA IN1} könnten wir auch \texttt{STA 08} schreiben - aber dann müssten wir die Adresse jedes Mal anpassen, wenn wir eine Programmzeile einfügen oder entfernen. 
+
+\subsubsection{Instruktionsarten}
+Jede Instruktion besteht aus dem Instruktionscode und allfälligen Operanden.
+\begin{itemize}
+	\item Arithmetische Operationen (\texttt{ADD}, \texttt{SUB}(-tract)…) werden durch das Rechenwerk (Arithmetic Logic Unit, ALU) ausgeführt. Der erste Operand der Operation steht normalerweise im \emph{Accumulator}, der zweite wird an der in der Instruktion gegebenen Adresse aus dem Speicher gelesen.
+	\item Sprung-Instruktionen (\texttt{BRA} etc. von en. \emph{branch}) ändern den Inhalt des \emph{Program Counter} (Adresse der nächsten Instruktion) auf die in der Instruktion enthaltene Adresse.
+	\begin{itemize}
+		\item Bedingte Sprünge hängen vom Zustand der CPU, beispielsweise vom Inhalt des \emph{Accumulator} ab. Damit lassen sich Schleifen (\texttt{while} / \texttt{for}) und Bedingungen (\texttt{if} / \texttt{else}) umsetzen.
+		\item Unbedingte Sprünge dienen zum Aufruf einer Funktion, oder zum Rücksprung an deren Ende.
+	\end{itemize}
+	\item Speicher-Instruktionen (\texttt{LDA}, \texttt{STA}) lesen Daten aus dem Speicher, oder schreiben dorthin.
+	\item Input/Output-Instruktionen (\texttt{INP}, \texttt{OUT}) lesen Eingaben oder schreiben in den Ausgabe-Puffer.
+	\item \texttt{HLT} beendet das Programm.
+\end{itemize}
 
 \cprotEnv\begin{question}
 	Was macht das folgende Programm? Beginnen Sie damit, für jede Zeile den Befehl zu beschreiben. Überlegen Sie dann, was das Programm macht. Sie können den implementierten Algorithmus in natürlicher Sprache oder in Python beschreiben.
@@ -563,31 +576,29 @@ Mit Verzweigungsinstruktionen (6xx, 7xx, 8xx) können Schleifen und Bedingungen 
 	INP    
 	STA IN2
 	SUB IN1
-	BRP ONE
+	BRP TWO  // Das ist ein Sprung!
 	LDA IN1
-	OUT    
-	HLT    
-ONE LDA IN2
-	OUT    
+	BRA END  // Das auch :)
+TWO LDA IN2
+END OUT
 	HLT    
 IN1 DAT
 IN2 DAT
-		\end{assembly}
+			\end{assembly}
 \end{question}
-\cprotEnv\begin{solution}\lp{
+\cprotEnv\begin{solution}
 	Das Programm mit decodierten Instruktionen:
 	\begin{assembly}
 	INP     // 901  ; Read Input 1
-	STA IN1 // 312  ; Store IN1
+	STA IN1 // 311  ; Store IN1
 	INP     // 901  ; Read Input 2
-	STA IN2 // 313  ; Store IN2
-	SUB IN1 // 212  ; Subtract Input 1 from Input 2
-	BRP ONE // 809  ; Branch to ONE if Accumulator is >= 0
-	LDA IN1 // 512  ; else: load Input 1
-	OUT     // 902  ; Output Input 1
-	HLT     // 000  ; HALT
-ONE LDA IN2 // 513  ; Branch target: load Input 2
-	OUT     // 902  ; Output Input 2
+	STA IN2 // 312  ; Store IN2
+	SUB IN1 // 211  ; Subtract Input 1 from Input 2
+	BRP TWO // 808  ; Branch to ONE if Accumulator is >= 0
+	LDA IN1 // 511  ; else: load Input 1
+	BRA END // 609  ; GOTO END
+TWO LDA IN2 // 512  ; Branch target: load Input 2
+END	OUT     // 902  ; Output Result
 	HLT     // 000  ; HALT
 IN1 DAT
 IN2 DAT
@@ -603,11 +614,8 @@ else:
 	result = input1
 print(result)
 	\end{python}
-}	
+	
 \end{solution}
-
-Ein Programm ist also nichts anderes als eine Folge von Zahlen (im Binärformat, natürlich), die Instruktionen codieren.
-
 
 \begin{question}
     Schreiben Sie ein Maschinencode-Programm für den Little-Man-Computer. Sie können Ihr Programm bei \url{http://www.peterhigginson.co.uk/LMC/} testen.
@@ -616,12 +624,15 @@ Ein Programm ist also nichts anderes als eine Folge von Zahlen (im Binärformat,
     \begin{tasks}
         \task Zwei Zahlen einlesen und addieren. 
         \task Eine Zahl einlesen, mit -1 multiplizieren und ausgeben.
+		\task Countdown: Eine Zahl einlesen, der Folge der Zahlen bis auf 0.
+		\task (*Optional) Eingabe n lesen, Fibonacci(n) ausgeben.
         \task (**Optional) Zwei Zahlen einlesen, das Produkt ausgeben. Funktioniert die Lösung auch mit negativen Zahlen?
+		\task (**Optional) Ganzzahldivision: Ausgabe des ganzzahligen Quotienten von zwei Eingaben.
 		\task (*** Optional) Schreiben Sie einen Bootloader, der ein Programm aus dem Input liest und ab Adresse 30 in den Speicher schreibt. Wenn eine 000 (HALT) gelesen wird, soll das eingelesene Programm ausgeführt werden.
     \end{tasks}
 \end{question}
 \cprotEnv\begin{solution}
-	\lp{    \begin{enumerate}[label=\alph*)]
+    \begin{enumerate}[label=\alph*)]
         \item Summe von zwei Inputs.
 		\begin{assembly}
 	INP     // 901  ; Read Input 1
@@ -644,9 +655,48 @@ IN1 DAT
 IN1 DAT
 			\end{assembly}
 
+		\item Schleife wird mittels BRP abgebrochen, wenn der Wert <0 wird. Was passiert bei negativem Input?
+			\begin{assembly}
+        INP
+LOOP    OUT
+		SUB ONE
+		BRP LOOP
+		HLT 
+ONE     DAT 1
+			\end{assembly}
+
+		\item Die beiden Summanden S1 und S2 müssen jeweils mit S2 und (S1 + S2) ersetzt werden, dafür benützen wir eine temporäre Adresse SWAP.
+			\begin{assembly}
+				INP
+				SUB ONE  // Start with input - 2, skip trivial values.
+				BRZ END
+				SUB ONE
+				BRZ END
+				STA IN
+		LOOP    LDA S1
+				ADD S2
+				STA SWAP  // swap = s1 + s2
+				LDA S2
+				STA S1    // s1 = s2
+				LDA SWAP
+				STA S2    // s2 = swap
+				LDA IN
+				SUB ONE
+				STA IN    // in = in - 1
+				BRZ END   // if in == 0: done, Fib(in) in s2
+				BRA LOOP  // not done yet
+		END     LDA S2
+				OUT
+				HLT 
+		IN      DAT 0
+		ONE     DAT 1
+		S1      DAT 1
+		S2      DAT 1
+		SWAP    DAT 0						
+			\end{assembly}
         \item Multiplikation mittels repetierter Addition.
 			\begin{assembly}
-// Multiply: read two inputs
+// Multiply: read two inputs, initialize result with zero.
 MAIN INP
 	STA IN1
 	LDA ZERO
@@ -657,7 +707,7 @@ MAIN INP
 	BRP LOOP
 // Otherwise, negate operands
 	BRA NEG
-// Loop: if IN2 != 0, subtract one from IN2 and add IN1 to result
+// Loop: while IN2 > 0, subtract one from IN2 and add IN1 to result
 LOOP BRZ END
 	SUB ONE
 	STA IN2
@@ -669,7 +719,7 @@ LOOP BRZ END
 // End: load result and output
 END LDA RES
 	OUT
-ZERO HLT
+    HLT
 // Negate: negate both operands if IN2 is negative
 NEG LDA ZERO
 	SUB IN1
@@ -679,20 +729,22 @@ NEG LDA ZERO
 	STA IN2
 	BRA LOOP
 // Data
+ZERO DAT 0
 ONE DAT 1
 IN1 DAT
 IN2 DAT
-RES DAT				
+RES DAT
            \end{assembly}
-		\item Die Speicheradresse für die Store-Instruktion (STR) in Zeile 4 muss im laufenden Programm geändert werden\dots
+	   \item Sinngemäss wie die Multiplikation: repetierte Subtraktion.
+	   \item Die Speicheradresse für die Store-Instruktion (Label STR) in Zeile 4 muss im laufenden Programm geändert werden\dots
 \begin{assembly}
 	 LDA ZERO  // 514  ; LDA zero
 	 STA BOOT  // 316  ; STA null to have a guaranteed HALT
 LOOP INP       // 901  ; SUB loop: read input
 	 BRZ FIN   // 709  ; GOTO finalize if input is 0
-STR  STA BOOT  // 316  ; Storage instruction
-	 LDA STR   // 504  ; store address instruction
-	 ADD ONE   // 115  ; ADD 1 to store address instruction
+STR  STA BOOT  // 316  ; Store current input
+	 LDA STR   // 504  ; Load storage instruction
+	 ADD ONE   // 115  ; Increment storage instruction
 	 STA STR   // 304  ; Change program
 	 BRA LOOP  // 602  ; GOTO LOOP
 FIN  LDA STR   // 504  ; SUB finalize: Load STR
@@ -705,7 +757,6 @@ ONE  DAT 1
 BOOT HLT       // Input is saved here and executed...
 		\end{assembly}			
     \end{enumerate}
-	}
 \end{solution}
 
 \subsubsection{Diskussion Maschinencode \& Von-Neumann-Architektur}
