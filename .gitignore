@@ -281,3 +281,5 @@ TSWLatexianTemp*
 *.lpz
 .vscode/settings.json
 __latexindent_temp.tex
+# Temp MS Office files
+~$*
